@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/02 17:35:30 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:56:57 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,14 @@ typedef struct s_cm1
 	t_red	*tmp_red;
 }	t_cm1;
 
+typedef struct s_amb
+{
+	bool	d_quotes;
+	bool	s_quotes;
+	bool	ambiguous;
+	int		r;
+}	t_ambg;
+
 /*~~~~~~~~~~~~~~~~~~~~~~~<history.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 void		glance_input(char *input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~~<token.c>~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -110,12 +118,16 @@ bool		quotes_is_valid(char *tokens);
 /*~~~~~~~~~~~~~~~~~~~~<utils3_tokens.c>~~~~~~~~~~~~~~~~~~*/
 void		cut_value_quotes(int *r, char *tokens, char c, bool flag);
 /*~~~~~~~~~~~~~~~~~~~~~<env_expander.c>~~~~~~~~~~~~~~~~~~~*/
-void		is_env(char **content, t_env *env, bool expander);
+void		is_env(char **content, t_env *env, bool expander, bool ambg);
 char		*key_value(char **content, char *v_env, int pos, int len_key);
 char		*key_not_found(char **content, int pos_key, int len_key);
+char		*env_value(char *key, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_list.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_env		*construct_env(char **env);
+/*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		env_space(char **input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exp_special.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		ambiguous_redirect(bool amb, char *key);
 bool		is_special(char c, bool f_quotes);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_env.c>~~~~~~~~~~~~~~~~~~~~~~*/

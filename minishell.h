@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/13 20:06:10 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/06/29 16:53:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ typedef struct s_cmd
 	t_cmd	*next;
 }	t_cmd;
 
-typedef struct s_global
-{
-	int	exit_status;
-}	t_global;
+/*~~~~~~~~~~~~~~~~~~~~~~<minishell.c>~~~~~~~~~~~~~~~~~~~~~~*/
+int		exit_status(int value);
+void	change_gsig1(int val);
 
 #endif

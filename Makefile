@@ -19,6 +19,7 @@ SRC = 	minishell.c									\
 		./parsing/tokens_core/utils3_tokens.c		\
 		./parsing/envp/env_expander.c				\
 		./parsing/envp/env_list.c					\
+		./parsing/envp/env_split.c					\
 		./parsing/envp/exp_special.c				\
 		./parsing/envp/utils_env.c					\
 		./parsing/envp/env_leaks.c					\
@@ -47,6 +48,7 @@ SRC_LIB = 	./libft/ft_strjoin.c 	\
 			./libft/ft_isdigit.c	\
 			./libft/ft_isalnum.c	\
 			./libft/ft_strcmp.c		\
+			./libft/ft_itoa.c		\
 
 OBJ_LIB = $(SRC:.c=.o)
 

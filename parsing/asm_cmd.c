@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:09:31 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/12 17:00:24 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:04:15 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,20 @@ t_cmd	*assemble_command(char *input, t_env *env)
 
 	tokens = NULL;
 	if (!quotes_is_valid(input))
+	{
+		exit_status(258);
 		return (first_free(tokens, input), printf(ERR_QUOTES), NULL);
+	}
+	env_space(&input, env);
 	tokens = segment_input(input);
 	if (!tokens)
 		return (p1char(&input), NULL);
 	refactor_tokens(&tokens, env);
 	if (!all_scrap(tokens))
-		return (first_free(tokens, input), NULL);
+		return (first_free(tokens, input), exit_status(258), NULL);
 	cmd = create_list_cmd(tokens);
 	if (!hydrate_cmd(&cmd, tokens))
 		return (first_free(tokens, input), NULL);
-	// first_free(tokens, input);
-	int	r = 0;
-	while (cmd)
-	{
-		printf("COMMAND [%d]\n", r++);
-		int i = -1;
-		while (cmd->commands[++i])
-			printf("c = %s\n", cmd->commands[i]);
-		while (cmd->red)
-		{
-			printf("file is %s\n", cmd->red->file);
-			cmd->red = cmd->red->next;
-		}
-		cmd = cmd->next;
-	}
+	first_free(tokens, input);
 	return (cmd);
 }

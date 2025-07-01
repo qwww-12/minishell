@@ -1,0 +1,95 @@
+1 = 
+bash-3.2$ cat << li'm'
+> $USER
+> li
+> lim
+$USER
+li
+bash-3.2$ cat << li"m"
+> $USER
+> lim
+$USER
+bash-3.2$ cat << lim
+> $USER
+> ext
+> lim
+mbarhoun
+ext
+
+2 = 
+
+echo "hhhh"lm'looor'
+
+3 =
+
+echo "hello""lo"pp"3'qw'"'"waaa"'
+echo "hello""power""mini'shell'"'"naaaa"'t
+4=
+
+echo $USER$USER'$USER'
+echo '$USER$USER'"$USER"
+
+5=
+hrwf "" "wd"''
+
+6=
+ls - la | grep "hello" >file
+
+7=
+ls -la > hello.txt | cat main.c
+
+8=
+echo looooooo|<<oo>>ooo
+
+9=
+iorwgior "'ewfgewrg'" "
+'hrwf "" "wd" '""'
+'u''
+
+10=
+"iqew"''          [spc]
+
+11=
+<>|<<|>> ""'' '  ' sf..''
+""'' '  ' sf..''
+
+12=
+echo" p"
+
+
+13=
+echo "$'USER'"
+echo $"$'USER'$"
+```$> knerofjk <<siom w>>oms
+COMMAND [0]
+c = knerofjk
+c = w
+file is siom
+file is oms
+$> knerofjk <<siom | w>>oms
+COMMAND [0]
+c = knerofjk
+file is siom
+COMMAND [1]
+c = w
+file is oms```
+
+
+=========== syntax ===============
+
+ls > >
+ls >
+<<<<
+
+
+if 0 // succsess // excution
+if 130 // ctrl c when stop process // yes
+if 127 // command not found // excution
+if 258 // syntax error // yes
+else
+	1 // ctrl -> c in input permision
+
+
+// export t="ls -a" -> arg = "ls" "-a"
+
+
