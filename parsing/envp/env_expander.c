@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:04:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 17:52:28 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:41:55 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static int	expand_var(char **content, t_ambg amb, t_env *env, bool f_quotes)
 		*content = key_not_found(content, amb.r, exp.len_key);
 	}
 	else
-		*content = key_value(content, exp.value, amb.r, exp.len_key + 1);
+		set_new_content(content, &exp, &amb);
 	free(exp.key);
 	if (exp.value)
 	{

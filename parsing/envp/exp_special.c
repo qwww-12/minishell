@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:37:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 16:53:23 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:32:40 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,29 @@ bool	is_special(char c, bool f_quotes)
 		|| (c == '"' && f_quotes))
 		return (1);
 	return (0);
+}
+
+int	count_word(char *content)
+{
+	bool	space;
+	int		len;
+	int		r;
+
+	r = 0;
+	len = 0;
+	space = 1;
+	while (content[r])
+	{
+		if (space)
+		{
+			len++;
+			space = 0;
+		}
+		if (is_space(content[r]))
+			space = 1;
+		r++;
+	}
+	return (len);
 }
 
 int	expand_meta(char **content, int pos, int r, bool f_quotes)

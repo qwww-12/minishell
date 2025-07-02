@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 18:02:16 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:06:13 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	print_cmd_structure(t_cmd *cmd_list)
 		cmd_list = cmd_list->next;
 	}
 }
-
 bool	g_sig = 0;
 
 void	change_gsig1(int val)

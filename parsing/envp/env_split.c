@@ -6,11 +6,28 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:17:43 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 18:04:56 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:20:53 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+static bool	is_red(int r, char *content)
+{
+	if (r < 1)
+		return (0);
+	r--;
+	while (r > 0 && content[r])
+	{
+		if (is_space(content[r]))
+			r--;
+		else
+			break ;
+	}
+	if (content[r] == '<' || content[r] == '>')
+		return (1);
+	return (0);
+}
 
 static bool	search_space(char *content)
 {
@@ -32,17 +49,27 @@ static int	expand_var1(char **content, int pos, t_env *env)
 		increment(&exp.r, &exp.len_key);
 	exp.key = cdup(exp.len_key, *content + (pos + 1));
 	exp.value = env_value(exp.key, env);
-	if (!exp.value)
-		return (free(exp.key), 1);
-	if (search_space(exp.value))
-		*content = key_value(content, exp.value, pos, exp.len_key + 1);
 	free(exp.key);
-	if (exp.value)
-	{
-		exp.len_value = ft_strlen(exp.value);
-		free(exp.value);
-	}
+	if (!exp.value)
+		return (1);
+	if (!search_space(exp.value))
+		return (free(exp.value), 1);
+	*content = key_value(content, exp.value, pos, exp.len_key + 1);
+	exp.len_value = ft_strlen(exp.value);
+	free(exp.value);
 	return (exp.len_value);
+}
+
+static void	value_quotes(char *content, bool *d_quotes, bool *s_quotes, int r)
+{
+	if (content[r] == '"' && *d_quotes)
+		*d_quotes = 0;
+	else if (content[r] == '\'' && *s_quotes)
+		*s_quotes = 0;
+	else if (content[r] == '"' && !*s_quotes)
+		*d_quotes = 1;
+	else if (content[r] == '\'' && !*d_quotes)
+		*s_quotes = 1;
 }
 
 void	env_space(char **input, t_env *env)
@@ -56,16 +83,11 @@ void	env_space(char **input, t_env *env)
 	r = 0;
 	while ((*input)[r])
 	{
-		if ((*input)[r] == '"' && d_quotes)
-			d_quotes = 0;
-		else if ((*input)[r] == '\'' && s_quotes)
-			s_quotes = 0;
-		else if ((*input)[r] == '"' && !s_quotes)
-			d_quotes = 1;
-		else if ((*input)[r] == '\'' && !d_quotes)
-			s_quotes = 1;
+		value_quotes(*input, &d_quotes, &s_quotes, r);
 		if ((*input)[r] == '$' && !s_quotes && !d_quotes)
 		{
+			if (is_red(r, *input))
+				break ;
 			r += expand_var1(input, r, env);
 			continue ;
 		}

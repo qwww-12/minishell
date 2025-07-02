@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/29 16:53:20 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:45:48 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_red
 typedef struct s_cmd
 {
 	char	**commands;
+	bool	amb;
 	t_red	*red;
 	t_cmd	*prev;
 	t_cmd	*next;

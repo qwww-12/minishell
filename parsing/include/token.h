@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 17:56:57 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:41:18 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,10 @@ void		env_space(char **input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exp_special.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		ambiguous_redirect(bool amb, char *key);
 bool		is_special(char c, bool f_quotes);
+int			count_word(char *content);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);
+/*~~~~~~~~~~~~~~~~~~~~~~<utils1_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		set_new_content(char **content, t_exp *exp, t_ambg *amb);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		change_value(bool *quotes, int value);
 void		increment(int *v1, int *v2);
