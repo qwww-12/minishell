@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:28:15 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/01 14:45:12 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:46:30 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ t_cmd	*cmd_node(void)
 	cmd->red = NULL;
 	cmd->prev = NULL;
 	cmd->next = NULL;
+	cmd->amb = 0;
 	return (cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:10:51 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/01 17:02:37 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:14:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	refactor_tokens(t_token **tokens, t_env *env)
 	ambg = 0;
 	while (token)
 	{
-		is_env(&token->content, env, expander, ambg);
+		is_env(&token, env, expander, ambg);
 		if (has_quotes(token->content))
 		{
 			if (!expander)

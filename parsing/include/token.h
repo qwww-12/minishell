@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/02 20:41:18 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/03 17:32:23 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_token
 	char	*content;
 	bool	red;
 	bool	exp;
+	bool	amb;
 	t_type	type_token;
 	t_token	*next;
 }	t_token;
@@ -118,7 +119,7 @@ bool		quotes_is_valid(char *tokens);
 /*~~~~~~~~~~~~~~~~~~~~<utils3_tokens.c>~~~~~~~~~~~~~~~~~~*/
 void		cut_value_quotes(int *r, char *tokens, char c, bool flag);
 /*~~~~~~~~~~~~~~~~~~~~~<env_expander.c>~~~~~~~~~~~~~~~~~~~*/
-void		is_env(char **content, t_env *env, bool expander, bool ambg);
+void		is_env(t_token **token, t_env *env, bool expander, bool ambg);
 char		*key_value(char **content, char *v_env, int pos, int len_key);
 char		*key_not_found(char **content, int pos_key, int len_key);
 char		*env_value(char *key, t_env *env);
@@ -127,12 +128,12 @@ t_env		*construct_env(char **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		env_space(char **input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exp_special.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		ambiguous_redirect(bool amb, char *key);
+void		ambiguous_redirect(t_token **token, bool amb, char *key);
 bool		is_special(char c, bool f_quotes);
 int			count_word(char *content);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils1_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		set_new_content(char **content, t_exp *exp, t_ambg *amb);
+void		set_new_content(t_token **token, t_exp *exp, t_ambg *amb);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		change_value(bool *quotes, int value);
 void		increment(int *v1, int *v2);
@@ -147,6 +148,7 @@ t_cmd		*create_list_cmd(t_token *tokens);
 int			counter_pipe(t_token *tokens);
 int			analyze_word(t_token *tokens);
 bool		mvalloc(char ***commands, int size);
+void		amb_next(t_token *token, t_cmd *tmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<nodes_cmd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_cmd		*cmd_node(void);
 t_red		*red_node(void);

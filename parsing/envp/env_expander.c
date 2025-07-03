@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:04:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/02 20:41:55 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:44:28 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,26 +84,26 @@ char	*key_value(char **content, char *v_env, int pos, int len_key)
 	return (value);
 }
 
-static int	expand_var(char **content, t_ambg amb, t_env *env, bool f_quotes)
+static int	expand_var(t_token **t, t_ambg amb, t_env *env, bool f_quotes)
 {
 	t_exp	exp;
 
 	set_var_exp(&exp.len_key, &exp.len_value, &exp.r, amb.r);
-	if (is_special((*content)[exp.r], f_quotes))
-		return (expand_meta(content, amb.r, exp.r, f_quotes));
-	while ((*content)[exp.r] && is_valid_key((*content)[exp.r]))
+	if (is_special((*t)->content[exp.r], f_quotes))
+		return (expand_meta(&(*t)->content, amb.r, exp.r, f_quotes));
+	while ((*t)->content[exp.r] && is_valid_key((*t)->content[exp.r]))
 		increment(&exp.r, &exp.len_key);
-	exp.key = cdup(exp.len_key, *content + (amb.r + 1));
+	exp.key = cdup(exp.len_key, (*t)->content + (amb.r + 1));
 	exp.value = env_value(exp.key, env);
-	if (!exp.value && (*content)[amb.r + 1] == '\'' && f_quotes)
+	if (!exp.value && (*t)->content[amb.r + 1] == '\'' && f_quotes)
 		return (p1char(&exp.key), 1);
 	if (!exp.value)
 	{
-		ambiguous_redirect(amb.ambiguous, exp.key);
-		*content = key_not_found(content, amb.r, exp.len_key);
+		ambiguous_redirect(t, amb.ambiguous, exp.key);
+		(*t)->content = key_not_found(&(*t)->content, amb.r, exp.len_key);
 	}
 	else
-		set_new_content(content, &exp, &amb);
+		set_new_content(t, &exp, &amb);
 	free(exp.key);
 	if (exp.value)
 	{
@@ -113,7 +113,7 @@ static int	expand_var(char **content, t_ambg amb, t_env *env, bool f_quotes)
 	return (exp.len_value);
 }
 
-void	is_env(char **content, t_env *env, bool expander, bool ambg)
+void	is_env(t_token **token, t_env *env, bool expander, bool ambg)
 {
 	t_ambg	amb;
 
@@ -121,19 +121,19 @@ void	is_env(char **content, t_env *env, bool expander, bool ambg)
 	amb.s_quotes = 0;
 	amb.ambiguous = ambg;
 	amb.r = 0;
-	while ((*content)[amb.r])
+	while ((*token)->content[amb.r])
 	{
-		if ((*content)[amb.r] == '"' && amb.d_quotes)
+		if ((*token)->content[amb.r] == '"' && amb.d_quotes)
 			change_value(&amb.d_quotes, 0);
-		else if ((*content)[amb.r] == '\'' && amb.s_quotes)
+		else if ((*token)->content[amb.r] == '\'' && amb.s_quotes)
 			change_value(&amb.s_quotes, 0);
-		else if ((*content)[amb.r] == '"' && !amb.s_quotes)
+		else if ((*token)->content[amb.r] == '"' && !amb.s_quotes)
 			change_value(&amb.d_quotes, 1);
-		else if ((*content)[amb.r] == '\'' && !amb.d_quotes)
+		else if ((*token)->content[amb.r] == '\'' && !amb.d_quotes)
 			change_value(&amb.s_quotes, 1);
-		else if ((*content)[amb.r] == '$' && !amb.s_quotes && expander)
+		else if ((*token)->content[amb.r] == '$' && !amb.s_quotes && expander)
 		{
-			amb.r += expand_var(content, amb, env, amb.d_quotes);
+			amb.r += expand_var(token, amb, env, amb.d_quotes);
 			continue ;
 		}
 		amb.r++;

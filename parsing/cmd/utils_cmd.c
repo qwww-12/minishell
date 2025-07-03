@@ -6,11 +6,18 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:13:42 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/17 15:10:55 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/03 17:30:22 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+void	amb_next(t_token *token, t_cmd *tmd)
+{
+	if (tmd->amb == 1)
+		return ;
+	tmd->amb = token->amb;
+}
 
 bool	mvalloc(char ***commands, int size)
 {
