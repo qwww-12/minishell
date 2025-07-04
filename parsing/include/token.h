@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/03 17:32:23 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:33:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,8 @@ void		p1char(char **ptr);
 void		p2char(char ***ptr);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		cmdfree(t_cmd *cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<signal.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	set_signals_main(void);
+void	set_signals_child(void);
 
 #endif

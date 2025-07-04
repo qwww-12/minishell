@@ -32,6 +32,8 @@ SRC = 	minishell.c									\
 		./parsing/syntax/utils_scrap.c				\
 		./parsing/leaks/ffree.c						\
 		./parsing/leaks/free_cmd_list.c				\
+		./parsing/signal/signal.c					\
+		./parsing/signal/herdoc_sig.c				\
 
 HDR = 		minishell.h 					\
 		 	./parsing/include/token.h		\
