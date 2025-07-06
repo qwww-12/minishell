@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/04 00:33:42 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:00:51 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_amb
 }	t_ambg;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~<history.c>~~~~~~~~~~~~~~~~~~~~~~~*/
-void		glance_input(char *input, t_env *env);
+void		history_input(char *input);
 /*~~~~~~~~~~~~~~~~~~~~~~~<token.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 t_cmd		*assemble_command(char *input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~<list_tokens.c>~~~~~~~~~~~~~~~~~~~~~*/
@@ -166,7 +166,7 @@ void		p2char(char ***ptr);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		cmdfree(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<signal.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	set_signals_main(void);
-void	set_signals_child(void);
+void		set_signals_main(void);
+void		set_signals_child(void);
 
 #endif

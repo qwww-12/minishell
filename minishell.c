@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/04 00:31:56 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:01:49 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ static char	*rd_line(t_env *env)
 		printf("exit\n");
 		exit(0);
 	}
-	glance_input(rd_line, env);
+	history_input(rd_line);
 	return (rd_line);
 }
 
