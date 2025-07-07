@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:09:31 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/03 17:51:43 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:19:38 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_cmd	*assemble_command(char *input, t_env *env)
 	tokens = segment_input(input);
 	if (!tokens)
 		return (p1char(&input), NULL);
-	refactor_tokens(&tokens, env);
 	if (!all_scrap(tokens))
 		return (first_free(tokens, input), exit_status(258), NULL);
+	refactor_tokens(&tokens, env);
 	cmd = create_list_cmd(tokens);
 	if (!hydrate_cmd(&cmd, tokens))
 		return (first_free(tokens, input), NULL);

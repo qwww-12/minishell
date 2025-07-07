@@ -18,6 +18,7 @@ SRC = 	minishell.c									\
 		./parsing/tokens_core/utils1_tokens.c		\
 		./parsing/tokens_core/utils3_tokens.c		\
 		./parsing/envp/env_expander.c				\
+		./parsing/envp/env_heredoc.c				\
 		./parsing/envp/env_list.c					\
 		./parsing/envp/env_split.c					\
 		./parsing/envp/exp_special.c				\
@@ -33,7 +34,6 @@ SRC = 	minishell.c									\
 		./parsing/leaks/ffree.c						\
 		./parsing/leaks/free_cmd_list.c				\
 		./parsing/signal/signal.c					\
-		./parsing/signal/herdoc_sig.c				\
 
 HDR = 		minishell.h 					\
 		 	./parsing/include/token.h		\

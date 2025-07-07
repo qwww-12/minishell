@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/06 16:01:49 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:43:25 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	print_cmd_structure(t_cmd *cmd_list)
 	}
 }
 
-bool	g_sig = 0;
-
 int	exit_status(int val)
 {
 	static int	exit;
@@ -90,29 +88,6 @@ int	exit_status(int val)
 	if (val > -1)
 		exit = val;
 	return (exit);
-}
-
-int	control_g(bool option, bool value)
-{
-	if (option == 0)
-		return ((bool)g_sig);
-	if (option == 1)
-		g_sig = value;
-	return (2);
-}
-
-void	ctrl_c(int sig)
-{
-	(void)sig;
-	write(1, "\n", 1);
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	exit_status(130);
-	if (g_sig == 0)
-	{
-		rl_redisplay();
-		exit_status(1);
-	}
 }
 
 static char	*rd_line(t_env *env)
@@ -151,7 +126,7 @@ int	main(int ac, char **av, char **ev)
 		if (!cmd)
 			continue ;
 		print_cmd_structure(cmd);
-		cmdfree(cmd);
 		system("leaks -q minishell");
+		cmdfree(cmd);
 	}
 }

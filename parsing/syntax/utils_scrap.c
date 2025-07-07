@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 13:54:17 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/01 09:34:36 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:12:09 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	is_vred(t_token *tokens)
 {
 	while (tokens)
 	{
-		if (tokens->type_token != WORD && tokens->type_token != PIPE)
+		if (tokens->type_token != WORD && tokens->type_token != PIPE
+			&& tokens->type_token != ENV)
 			tokens->red = 1;
 		tokens = tokens->next;
 	}

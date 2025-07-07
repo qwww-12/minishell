@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/06 16:00:51 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/07 17:20:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ void		is_env(t_token **token, t_env *env, bool expander, bool ambg);
 char		*key_value(char **content, char *v_env, int pos, int len_key);
 char		*key_not_found(char **content, int pos_key, int len_key);
 char		*env_value(char *key, t_env *env);
+/*~~~~~~~~~~~~~~~~~~~~~<env_heredoc.c>~~~~~~~~~~~~~~~~~~~*/
+void		resolve_heredoc(t_env *env, char **input, int fd);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_list.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_env		*construct_env(char **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
@@ -168,5 +170,6 @@ void		cmdfree(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<signal.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		set_signals_main(void);
 void		set_signals_child(void);
+void		set_signals_heredoc(void);
 
 #endif
