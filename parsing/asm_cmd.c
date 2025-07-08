@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:09:31 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/06 17:19:38 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:11:59 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_cmd	*assemble_command(char *input, t_env *env)
 	if (!quotes_is_valid(input))
 	{
 		exit_status(258);
-		return (first_free(tokens, input), printf(ERR_QUOTES), NULL);
+		return (first_free(tokens, input), eprintf(ERR_QUOTES), NULL);
 	}
 	env_space(&input, env);
 	tokens = segment_input(input);

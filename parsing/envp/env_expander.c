@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:04:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/03 16:44:28 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:19:45 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*key_not_found(char **content, int pos_key, int len_key)
 	f = 0;
 	value = malloc(sizeof(char) * (ft_strlen(*content) - len_key + 2));
 	if (!value)
-		return (NULL);
+		return (eprintf(ERR_MEM), NULL);
 	while ((*content)[++r])
 	{
 		if (r == pos_key)
@@ -67,7 +67,7 @@ char	*key_value(char **content, char *v_env, int pos, int len_key)
 	f = 0;
 	value = malloc(ft_strlen(*content) - len_key + ft_strlen(v_env) + 1);
 	if (!value)
-		return (NULL);
+		return (eprintf(ERR_MEM), NULL);
 	while ((*content)[++r] && r < ft_strlen(*content))
 	{
 		if (r == pos)

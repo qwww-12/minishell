@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 02:08:38 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:09:41 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,5 +172,7 @@ void		cmdfree(t_cmd *cmd);
 void		set_signals_main(void);
 void		set_signals_child(void);
 void		set_signals_heredoc(void);
+/*~~~~~~~~~~~~~~~~~~~~~~<error.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		eprintf(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:13:42 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/03 17:30:22 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:25:17 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	mvalloc(char ***commands, int size)
 {
 	*commands = malloc(sizeof(char *) * (size + 1));
 	if (!*commands)
-		return (printf(ERR_MEM), 0);
+		return (eprintf(ERR_MEM), 0);
 	return (1);
 }
 

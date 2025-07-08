@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:56:57 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/01 09:35:08 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:12:39 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*cdup(int size, char *content)
 	r = -1;
 	dup = malloc(sizeof(char) * (size + 1));
 	if (!dup)
-		return (NULL);
+		return (eprintf(ERR_MEM), NULL);
 	while (content[++r] && r < size)
 		dup[r] = content[r];
 	dup[r] = '\0';

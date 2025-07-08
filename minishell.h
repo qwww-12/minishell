@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/04 00:32:17 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 06:42:17 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ typedef struct s_cmd
 
 /*~~~~~~~~~~~~~~~~~~~~~~<minishell.c>~~~~~~~~~~~~~~~~~~~~~~*/
 int		exit_status(int value);
-int		control_g(bool option, bool value);
 
 #endif
