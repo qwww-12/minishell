@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/07 18:18:15 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 02:11:01 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int	main(int ac, char **av, char **ev)
 		cmd = assemble_command(buffer, env);
 		if (!cmd)
 			continue ;
-		// print_cmd_structure(cmd);
-		// system("leaks -q minishell");
 		cmdfree(cmd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:17:43 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/02 20:20:53 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/08 02:09:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	expand_var1(char **content, int pos, t_env *env)
 		return (1);
 	if (!search_space(exp.value))
 		return (free(exp.value), 1);
+	exp.value = new_value_quotes(exp.value);
 	*content = key_value(content, exp.value, pos, exp.len_key + 1);
 	exp.len_value = ft_strlen(exp.value);
 	free(exp.value);
