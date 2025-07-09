@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 22:55:13 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:12:30 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef PARSING_H
+# define PARSING_H
 
 # define ERR_MEM "Allocation Faield\n"
 
@@ -162,17 +162,5 @@ bool		all_scrap(t_token *tokens);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_scrap.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		is_vred(t_token *tokens);
 void		wr_syntax(t_type type);
-/*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		first_free(t_token *tokens, char *input);
-void		p1char(char **ptr);
-void		p2char(char ***ptr);
-/*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		cmdfree(t_cmd *cmd);
-/*~~~~~~~~~~~~~~~~~~~~~~<signal.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		set_signals_main(void);
-void		set_signals_child(void);
-void		set_signals_heredoc(void);
-/*~~~~~~~~~~~~~~~~~~~~~~<error.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		eprintf(const char *str);
 
 #endif

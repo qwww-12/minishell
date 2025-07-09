@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:04:14 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:12:55 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <signal.h>
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/readline.h"
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/history.h"
-# include "./parsing/include/token.h"
+# include "./parsing/include/parsing.h"
 # include "./parsing/include/syntax.h"
+// # include "./excution/include/exec.h"
 # include "./libft/libft.h"
 
 typedef struct s_env	t_env;
