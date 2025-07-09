@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:09:41 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:55:13 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ typedef struct s_amb
 	int		r;
 }	t_ambg;
 
-/*~~~~~~~~~~~~~~~~~~~~~~~<history.c>~~~~~~~~~~~~~~~~~~~~~~~*/
-void		history_input(char *input);
+/*~~~~~~~~~~~~~~~~~~~~~~~<input.c>~~~~~~~~~~~~~~~~~~~~~~~*/
+char		*rd_line(t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~~<token.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 t_cmd		*assemble_command(char *input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~<list_tokens.c>~~~~~~~~~~~~~~~~~~~~~*/

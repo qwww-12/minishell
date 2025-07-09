@@ -1,18 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   s_free.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 09:08:24 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:09:16 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/06/01 10:51:25 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/09 23:09:24 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-void	eprintf(const char *str)
+static void	free_redirections(t_red *red)
 {
-	write(2, str, ft_strlen(str));
+	t_red	*tmp;
+
+	while (red)
+	{
+		tmp = red;
+		p1char(&red->file);
+		red = red->next;
+		free(tmp);
+	}
+}
+
+void	cmdfree(t_cmd *cmd)
+{
+	t_cmd	*tmp;
+
+	while (cmd)
+	{
+		tmp = cmd;
+		if (cmd->commands)
+			p2char(&cmd->commands);
+		if (cmd->red)
+			free_redirections(cmd->red);
+		cmd = cmd->next;
+		free(tmp);
+	}
 }

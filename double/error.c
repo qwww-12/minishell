@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:06:00 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/08 09:08:24 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/09 23:08:51 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../minishell.h"
 
-int	main(int ac, char **av, char **ev)
+void	eprintf(const char *str)
 {
-	char	*buffer;
-	t_cmd	*cmd;
-	t_env	*env;
-
-	(void)ac;
-	(void)av;
-	env = construct_env(ev);
-	while (1)
-	{
-		rl_catch_signals = 0;
-		set_signals_main();
-		buffer = rd_line(env);
-		cmd = assemble_command(buffer, env);
-		if (!cmd)
-			continue ;
-		// excute_command();
-		cmdfree(cmd);
-	}
+	write(2, str, ft_strlen(str));
 }

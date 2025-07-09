@@ -9,8 +9,8 @@ NAME = minishell
 LIB = ./libft/libft.a
 
 SRC = 	minishell.c									\
-		./parsing/history/history.c					\
 		./parsing/asm_cmd.c							\
+		./parsing/input/input.c						\
 		./parsing/tokens_core/list_tokens.c			\
 		./parsing/tokens_core/refactor_tokens.c		\
 		./parsing/tokens_core/unquotes.c			\
@@ -31,10 +31,11 @@ SRC = 	minishell.c									\
 		./parsing/cmd/content_cmd.c					\
 		./parsing/syntax/scrap.c					\
 		./parsing/syntax/utils_scrap.c				\
-		./parsing/leaks/ffree.c						\
-		./parsing/leaks/free_cmd_list.c				\
-		./parsing/signal/signal.c					\
-		./parsing/error/error.c						\
+		./double/exit_status.c						\
+		./double/signal.c							\
+		./double/error.c							\
+		./double/v_free.c							\
+		./double/s_free.c							\
 		# exec/exec.c								\
 		# exec/gnl/get_next_line.c					\
 		# exec/gnl/get_next_line_utils.c			\

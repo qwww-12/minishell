@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 06:42:17 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:04:14 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,17 @@ typedef struct s_cmd
 	t_cmd	*prev;
 	t_cmd	*next;
 }	t_cmd;
-
-/*~~~~~~~~~~~~~~~~~~~~~~<minishell.c>~~~~~~~~~~~~~~~~~~~~~~*/
-int		exit_status(int value);
-
+/*~~~~~~~~~~~~~~~~~~~~~~~<exit_status.c>~~~~~~~~~~~~~~~~~~~~~~~*/
+int			e_status(int val);
+/*~~~~~~~~~~~~~~~~~~~~~~<error.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		eprintf(const char *str);
+/*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		first_free(t_token *tokens, char *input);
+void		p1char(char **ptr);
+void		p2char(char ***ptr);
+void		cmdfree(t_cmd *cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<signal.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		set_signals_main(void);
+void		set_signals_child(void);
+void		set_signals_heredoc(void);
 #endif

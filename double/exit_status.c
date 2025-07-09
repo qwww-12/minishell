@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cmd_list.c                                    :+:      :+:    :+:   */
+/*   exit_status.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 10:51:25 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/01 13:02:06 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/09 22:57:51 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/09 23:07:56 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
+// void	set_e_status(int status)
+// {
+// 	// continue ;
+// }
 
-static void	free_redirections(t_red *red)
+int	e_status(int val)
 {
-	t_red	*tmp;
+	static int	exit;
 
-	while (red)
-	{
-		tmp = red;
-		p1char(&red->file);
-		red = red->next;
-		free(tmp);
-	}
-}
-
-void	cmdfree(t_cmd *cmd)
-{
-	t_cmd	*tmp;
-
-	while (cmd)
-	{
-		tmp = cmd;
-		if (cmd->commands)
-			p2char(&cmd->commands);
-		if (cmd->red)
-			free_redirections(cmd->red);
-		cmd = cmd->next;
-		free(tmp);
-	}
+	if (val > -1)
+		exit = val;
+	return (exit);
 }

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:37:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/06 18:11:55 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:07:05 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	expand_meta(char **content, int pos, int r, bool f_quotes)
 		return (*content = key_not_found(content, pos, 1), 0);
 	if ((*content)[r] == '?')
 	{
-		ival = exit_status(-1);
+		ival = e_status(-1);
 		sval = ft_itoa(ival);
 		return (*content = key_value(content, sval, pos, 2), \
 				p1char(&sval), ft_strlen("0"));
