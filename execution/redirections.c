@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:45:01 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 16:49:16 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:56:09 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,17 @@ bool	set_fd_redirections(t_cmd *cmd)
 
 bool	dup2_fd_redirections(t_cmd *cmd)
 {
-	if (dup2(cmd->io_fd[0], 0) == 1)
-		return (eprintf(ERR_DUP2), 0);
-	if (dup2(cmd->io_fd[1], 1) == 1)
-		return (eprintf(ERR_DUP2), 0);
+	if (cmd->io_fd[0] != 0 && cmd->io_fd[0] != -1)
+	{
+		if (dup2(cmd->io_fd[0], 0) == -1)
+			return (eprintf(ERR_DUP2), 0);
+		close(cmd->io_fd[0]);
+	}
+	if (cmd->io_fd[1] != 1 && cmd->io_fd[1] != -1)
+	{
+		if (dup2(cmd->io_fd[1], 1) == -1)
+			return (eprintf(ERR_DUP2), 0);
+		close(cmd->io_fd[1]);
+	}
+	return (1);
 }

@@ -40,8 +40,10 @@ SRC = 	minishell.c									\
 		./execution/heredooc.c						\
 		./execution/leaks_fd.c						\
 		./execution/redirections.c					\
+		./execution/fd.c							\
 		./execution/builtin/builtin.c				\
 		./execution/builtin/ft_echo.c				\
+		./execution/builtin/ft_env.c				\
 		./execution/v_error.c						\
 
 HDR = 		minishell.h 					\

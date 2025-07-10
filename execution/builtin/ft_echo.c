@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:30:24 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 14:26:24 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:55:01 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	ft_echo(t_cmd *cmd)
 		r += nl;
 	while (cmd->commands[r])
 	{
-		printf("%s", cmd->commands[r]);
+		write(1, cmd->commands[r], ft_strlen(cmd->commands[r]));
 		if (cmd->commands[r + 1])
-			printf(" ");
+			write(1, " ", 1);
 		r++;
 	}
 	if (!nl)
-		printf("\n");
+		write(1, "\n", 1);
 	e_status(0);
 }

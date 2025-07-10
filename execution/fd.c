@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core_exec.c                                        :+:      :+:    :+:   */
+/*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 23:16:30 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 18:23:18 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/10 17:46:32 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/10 18:22:12 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	excute_commands(t_cmd *cmd, t_env *env)
+bool	restore_io_fd(int *fds)
 {
-	int		backup_fd[2];
+	if (dup2(fds[0], 0) == -1)
+		return (eprintf(ERR_DUP2), 0);
+	if (dup2(fds[1], 1) == -1)
+		return (eprintf(ERR_DUP2), 0);
+	return (1);
+}
 
-	signal(SIGINT, SIG_IGN);
-	if (!setup_heredocs(cmd, env))
-		return ;
-	store_io_fd(backup_fd);
-	if (is_builtin(cmd->commands[0]) && !cmd->next)
-	{
-		if (!set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
-			return ;
-		start_builtin(cmd, env);
-		restore_io_fd(backup_fd);
-	}
+bool	store_io_fd(int *fds)
+{
+	fds[0] = dup(0);
+	fds[1] = dup(1);
+	if (fds[0] == -1 || fds[1] == -1)
+		return (eprintf(ERR_DUP), 0);
+	return (1);
 }

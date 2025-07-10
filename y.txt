@@ -1,0 +1,2 @@
+rnv | grep PATH
+echo -n m > l
