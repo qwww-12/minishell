@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:12:30 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:14:53 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_amb
 /*~~~~~~~~~~~~~~~~~~~~~~~<input.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 char		*rd_line(t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~~<token.c>~~~~~~~~~~~~~~~~~~~~~~~*/
-t_cmd		*assemble_command(char *input, t_env *env);
+t_cmd		*assemble_commands(char *input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~<list_tokens.c>~~~~~~~~~~~~~~~~~~~~~*/
 t_token		*segment_input(char *tokens);
 /*~~~~~~~~~~~~~~~~~~<refactor_tokens.c>~~~~~~~~~~~~~~~~~~~*/

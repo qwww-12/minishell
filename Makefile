@@ -36,9 +36,9 @@ SRC = 	minishell.c									\
 		./double/error.c							\
 		./double/v_free.c							\
 		./double/s_free.c							\
-		# exec/exec.c								\
-		# exec/gnl/get_next_line.c					\
-		# exec/gnl/get_next_line_utils.c			\
+		./execution/core_exec.c						\
+		./execution/heredooc.c						\
+		./execution/leaks_fd.c						\
 
 HDR = 		minishell.h 					\
 		 	./parsing/include/token.h		\
@@ -57,15 +57,27 @@ SRC_LIB = 	./libft/ft_strjoin.c 	\
 			./libft/ft_isalnum.c	\
 			./libft/ft_strcmp.c		\
 			./libft/ft_itoa.c		\
+			./libft/ft_putstr_fd.c	\
+			./libft/ft_putchar_fd.c	\
 
 OBJ_LIB = $(SRC:.c=.o)
 
 HDR_LIB = ./libft/libft.h
 
+S_GNL = ./execution/get_next_line/gnl.c			\
+		./execution/get_next_line/gnl_utils.c	\
+
+HDR_GNL = ./parsing/get_next_line/gnl.h
+
+OBJ_GNL = $(S_GNL:.c=.o)
+
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(OBJ) $(LIB) -I$(HOME)/.brew/opt/readline/include -L$(HOME)/.brew/opt/readline/lib -lreadline -o $@ $(RFLG)
+$(NAME): $(OBJ) $(OBJ_GNL) $(LIB)
+	$(CC) $(CFLAGS) $(OBJ_GNL) $(OBJ) $(LIB) -I$(HOME)/.brew/opt/readline/include -L$(HOME)/.brew/opt/readline/lib -lreadline -o $@ $(RFLG)
+
+./parsing/get_next_line/%.o: ./parsing/get_next_line/%.c $HDR_GNL
+	$(CC) $(CFALGS) -c $< -o $@
 
 %.o: %.c $(HDR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -74,6 +86,7 @@ $(LIB): $(SRC_LIB) $(HDR_LIB)
 	$(MAKE) -C ./libft
 
 clean:
+	rm -f $(OBJ_GNL)
 	rm -f $(OBJ)
 	$(MAKE) -C ./libft clean
 

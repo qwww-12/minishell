@@ -6,13 +6,13 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:09:31 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:06:25 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/10 08:54:04 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_cmd	*assemble_command(char *input, t_env *env)
+t_cmd	*assemble_commands(char *input, t_env *env)
 {
 	t_cmd	*cmd;
 	t_token	*tokens;
