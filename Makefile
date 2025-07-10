@@ -39,6 +39,10 @@ SRC = 	minishell.c									\
 		./execution/core_exec.c						\
 		./execution/heredooc.c						\
 		./execution/leaks_fd.c						\
+		./execution/redirections.c					\
+		./execution/builtin/builtin.c				\
+		./execution/builtin/ft_echo.c				\
+		./execution/v_error.c						\
 
 HDR = 		minishell.h 					\
 		 	./parsing/include/token.h		\

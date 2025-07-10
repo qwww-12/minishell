@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core_exec.c                                        :+:      :+:    :+:   */
+/*   v_error.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 23:16:30 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 16:48:46 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/10 16:10:07 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/10 16:34:18 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	excute_commands(t_cmd *cmd, t_env *env)
+void	file_not_found(const char *file)
 {
-	signal(SIGINT, SIG_IGN);
-	if (!setup_heredocs(cmd, env))
-		return ;
-	if (is_builtin(cmd->commands[0]) && !cmd->next)
-	{
-		if (!set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
-			return ;
-		start_builtin(cmd, env);
-	}
+	write(2, "minishell: ", 11);
+	write(2, file, ft_strlen(file));
+	write(2, ": No such file or directory\n", 28);
 }
