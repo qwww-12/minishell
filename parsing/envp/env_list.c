@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:38:17 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:11:35 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:10:52 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_env_value(char *env)
 	return (value);
 }
 
-static t_env	*new_env(char *key, char *value)
+static t_env	*new_env(char *key, char *value, bool eq)
 {
 	t_env	*env;
 
@@ -72,6 +72,7 @@ static t_env	*new_env(char *key, char *value)
 		return (eprintf(ERR_MEM), NULL);
 	env->key = key;
 	env->value = value;
+	env->eq = eq;
 	env->next = NULL;
 	return (env);
 }
@@ -86,7 +87,7 @@ t_env	*construct_env(char **ev)
 
 	if (!ev || !*ev)
 		return (NULL);
-	env = new_env(get_env_key(ev[0]), get_env_value(ev[0]));
+	env = new_env(get_env_key(ev[0]), get_env_value(ev[0]), is_eq(ev[0]));
 	if (!env)
 		return (NULL);
 	tmp = env;
@@ -94,7 +95,7 @@ t_env	*construct_env(char **ev)
 	r = 0;
 	while (++r < counter)
 	{
-		new = new_env(get_env_key(ev[r]), get_env_value(ev[r]));
+		new = new_env(get_env_key(ev[r]), get_env_value(ev[r]), is_eq(ev[r]));
 		if (!new)
 			return (env_leaks(env), eprintf(ERR_MEM), NULL);
 		tmp->next = new;

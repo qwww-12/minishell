@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 19:57:59 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:55:40 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ void	start_builtin(t_cmd *cmd, t_env *env);
 void	ft_echo(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_env(t_env *env);
+/*~~~~~~~~~~~~~~~~~~~~~~<ft_export.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	ft_export(t_env *env, char **cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<ft_unset.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	ft_unset(t_env *env, char **cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
+char	*get_valide_key(char *str);
+void	swap_nodes(t_env *node1, t_env *node2);
+void	desplay_list_export(t_env *env);
+t_env	*ft_copy_env(t_env *env);
+/*~~~~~~~~~~~~~~~~~~~~~~<export_utils_1.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	list_add_back(t_env **list, t_env *new);
+int		list_size(t_env *list);
+t_env	*list_new_node(char *value, char *key, bool eg);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	file_not_found(const char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
@@ -45,4 +58,5 @@ bool	dup2_fd_redirections(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<fd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	store_io_fd(int *fds);
 bool	restore_io_fd(int *fds);
+
 #endif

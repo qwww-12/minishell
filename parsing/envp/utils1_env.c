@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:26:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:23:34 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:42:41 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ static void	err_wrt(const char *file)
 	write(2, "minishell: $", 12);
 	write(2, file, ft_strlen(file));
 	write(2, ": ambiguous redirect\n", 21);
+}
+
+bool	is_eq(char *content)
+{
+	int		r;
+
+	r = 0;
+	while (content[r])
+	{
+		if (content[r] == '=')
+			return (1);
+		r++;
+	}
+	return (0);
 }
 
 char	*new_value_quotes(char *str)

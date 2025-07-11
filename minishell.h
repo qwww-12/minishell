@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 17:47:46 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:36:41 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_env
 {
 	char	*key;
 	char	*value;
+	bool	eq;
 	t_env	*next;
 }	t_env;
 

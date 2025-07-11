@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:14:53 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:10:48 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ int			expand_meta(char **content, int pos, int r, bool f_quotes);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils1_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		set_new_content(t_token **token, t_exp *exp, t_ambg *amb);
 char		*new_value_quotes(char *str);
+bool		is_eq(char *content);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		change_value(bool *quotes, int value);
 void		increment(int *v1, int *v2);

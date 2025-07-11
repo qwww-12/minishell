@@ -6,11 +6,20 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:14:38 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:45:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
+
+void	print_env(t_env *env)
+{
+	while (env)
+	{
+		printf("%s = %s\n", env->key, env->value);
+		env = env->next;
+	}
+}
 
 int	main(int ac, char **av, char **ev)
 {
@@ -29,7 +38,7 @@ int	main(int ac, char **av, char **ev)
 		cmd = assemble_commands(buffer, env);
 		if (!cmd)
 			continue ;
-		excute_commands(cmd, env);
+		// excute_commands(cmd, env);
 		cmdfree(cmd);
 	}
 }
