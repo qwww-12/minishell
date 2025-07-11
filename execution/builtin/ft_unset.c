@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:30:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 19:01:28 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:38:28 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,33 @@ static void	remove_var(t_env *env, t_env *rmv)
 	free1nd(rmv);
 }
 
-static void	var_isfound(t_env *env, char *var)
+static void	var_isfound(t_env **env, char *var)
 {
 	t_env	*tmp;
+	t_env	*envp;
 
 	tmp = NULL;
-	while (env)
+	envp = *env;
+	while (envp)
 	{
-		if (!ft_strcmp(env->key, var))
+		if (!ft_strcmp(envp->key, var))
 		{
 			if (!tmp)
 			{
-				tmp = env;
-				env = env->next;
+				tmp = envp;
+				envp = envp->next;
+				*env = (*env)->next;
 				free1nd(tmp);
 				continue ;
 			}
-			remove_var(tmp, env);
+			remove_var(tmp, *env);
 		}
-		tmp = env;
-		env = env->next;
+		tmp = envp;
+		envp = envp->next;
 	}
 }
 
-void	ft_unset(t_env *env, char **cmd)
+void	ft_unset(t_env **env, char **cmd)
 {
 	int		r;
 

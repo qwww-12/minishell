@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 18:55:40 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:39:36 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ typedef struct s_env	t_env;
 typedef struct s_red	t_red;
 
 /*~~~~~~~~~~~~~~~~~~~~~~<core_exec.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	excute_commands(t_cmd *cmd, t_env *env);
+void	excute_commands(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<core_exec.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	setup_heredocs(t_cmd *cmd, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks_fd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	close_fd(int *fd);
 /*~~~~~~~~~~~~~~~~~~~~~~<builtins.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	is_builtin(char *command);
-void	start_builtin(t_cmd *cmd, t_env *env);
+void	start_builtin(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_echo.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_echo(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
@@ -40,7 +40,7 @@ void	ft_env(t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_export.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_export(t_env *env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_unset.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	ft_unset(t_env *env, char **cmd);
+void	ft_unset(t_env **env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*get_valide_key(char *str);
 void	swap_nodes(t_env *node1, t_env *node2);
