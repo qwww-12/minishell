@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 21:11:20 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:55:06 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	setup_heredocs(t_cmd *cmd, t_env *env);
 void	close_fd(int *fd);
 void	close_all_fd(int *fd1, int *fd2);
 /*~~~~~~~~~~~~~~~~~~~~~~<builtins.c>~~~~~~~~~~~~~~~~~~~~~~*/
-bool	is_builtin(char *command);
+bool	is_builtin(t_cmd *cmd);
 void	start_builtin(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_echo.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_echo(t_cmd *cmd);
