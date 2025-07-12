@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:10:51 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/03 16:14:42 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:02:23 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ static void	demote_env_token(t_token **tokens)
 	{
 		if (token->type_token == ENV)
 			token->type_token = WORD;
+		token = token->next;
+	}
+}
+
+static void	ambiguous_type(t_token *token)
+{
+	while (token)
+	{
+		if (token->next && token->next->type_token == AMB)
+			token->type_token = AMB;
 		token = token->next;
 	}
 }
@@ -57,5 +67,6 @@ void	refactor_tokens(t_token **tokens, t_env *env)
 		ambg = is_ambiguous(token);
 		token = token->next;
 	}
+	ambiguous_type(*tokens);
 	demote_env_token(tokens);
 }

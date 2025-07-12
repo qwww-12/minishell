@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 19:26:27 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:11:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	excute_commands(t_cmd *cmd, t_env **env);
 bool	setup_heredocs(t_cmd *cmd, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks_fd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	close_fd(int *fd);
+void	close_all_fd(int *fd1, int *fd2);
 /*~~~~~~~~~~~~~~~~~~~~~~<builtins.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	is_builtin(char *command);
 void	start_builtin(t_cmd *cmd, t_env **env);
@@ -63,6 +64,7 @@ void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
 bool	is_home(char *pwd);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	file_not_found(const char *file);
+void	ambiguous_redirect_output(char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	set_fd_redirections(t_cmd *cmd);
 bool	dup2_fd_redirections(t_cmd *cmd);

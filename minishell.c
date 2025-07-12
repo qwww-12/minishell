@@ -6,20 +6,11 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:30:34 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:12:23 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
-
-void	print_env(t_env *env)
-{
-	while (env)
-	{
-		printf("%s = %s\n", env->key, env->value);
-		env = env->next;
-	}
-}
 
 int	main(int ac, char **av, char **ev)
 {

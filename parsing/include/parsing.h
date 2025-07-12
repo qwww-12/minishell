@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:48:10 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:35:26 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_token_type
 	APPEND,
 	HERDOOC,
 	ENV,
+	AMB,
 }	t_type;
 
 typedef struct s_token
@@ -133,7 +134,7 @@ t_env		*construct_env(char **env, bool first);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		env_space(char **input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exp_special.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void		ambiguous_redirect(t_token **token, bool amb, char *key);
+void		ambiguous_redirect(t_token **t, t_ambg *ambr, t_exp *exp);
 bool		is_special(char c, bool f_quotes);
 int			count_word(char *content);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);

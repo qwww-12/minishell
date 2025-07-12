@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:04:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:19:45 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:58:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,12 @@ static int	expand_var(t_token **t, t_ambg amb, t_env *env, bool f_quotes)
 	if (!exp.value && (*t)->content[amb.r + 1] == '\'' && f_quotes)
 		return (p1char(&exp.key), 1);
 	if (!exp.value)
-	{
-		ambiguous_redirect(t, amb.ambiguous, exp.key);
-		(*t)->content = key_not_found(&(*t)->content, amb.r, exp.len_key);
-	}
+		ambiguous_redirect(t, &amb, &exp);
 	else
 		set_new_content(t, &exp, &amb);
 	free(exp.key);
+	if (amb.ambiguous)
+		return (1);
 	if (exp.value)
 	{
 		exp.len_value = ft_strlen(exp.value);

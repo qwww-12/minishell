@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:45:01 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 18:56:09 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:15:13 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ bool	set_fd_redirections(t_cmd *cmd)
 		if (red->red_type == REDIR_IN || red->red_type == HERDOOC)
 			if (!set_fd_infile(cmd, red))
 				return (0);
+		if (red->red_type == AMB)
+		{
+			close_all_fd(&cmd->io_fd[0], &cmd->io_fd[1]);
+			ambiguous_redirect_output(red->file);
+			e_status(1);
+			return (0);
+		}
 		red = red->next;
 	}
 	return (1);

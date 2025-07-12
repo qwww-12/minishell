@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:37:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/09 23:07:05 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:04:01 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ static bool	is_expempty(char c)
 	return (0);
 }
 
-void	ambiguous_redirect(t_token **token, bool amb, char *key)
+void	ambiguous_redirect(t_token **t, t_ambg *ambr, t_exp *exp)
 {
-	if (amb)
+	if (ambr->ambiguous)
 	{
-		printf("minishell: $%s: ambiguous redirect\n", key);
-		(*token)->amb = 1;
+		(*t)->amb = 1;
+		(*t)->type_token = AMB;
+		return ;
 	}
+	(*t)->content = key_not_found(&(*t)->content, ambr->r, exp->len_key);
 }
 
 bool	is_special(char c, bool f_quotes)

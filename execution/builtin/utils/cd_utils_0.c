@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 18:53:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 19:27:33 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:18:33 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void	update_env(t_env *env, char *new_value, char *key)
 bool	is_home(char *pwd)
 {
 	return ((!pwd || (pwd && pwd[0] == '~' && !pwd[1]) 
-			|| (pwd && pwd[0] == '-' && pwd[1] == '-' && !pwd[2])));
+			|| (pwd && pwd[0] == '-' && pwd[1] == '-' && !pwd[2]))
+			|| (pwd && !pwd[0]));
 }
 
 void	update_env_clean(t_env *env, char **newpwd, char **oldpwd)
