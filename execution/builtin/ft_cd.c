@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:21:03 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 18:30:34 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:32:15 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static void	error_cd_output(char *path)
 	e_status(1);
 }
 
-static void	update_env(t_env *env, char *new_value, char *key)
+static void	old_path_output(int old, char *newpwd)
 {
-	while (env)
+	if (old == 1)
 	{
-		if (!ft_strcmp(env->key, key))
+		if (newpwd)
 		{
-			if (env->value)
-				p1char(&env->value);
-			env->value = ft_strdup(new_value);
-			env->eq = 1;
+			e_status(0);
+			write(1, newpwd, ft_strlen(newpwd));
+			write(1, "\n", 1);
 		}
-		env = env->next;
-	}	
+		else
+			error_cd_output("OLDPWD");
+	}
 }
 
 static bool	home_path(t_env *env, char **newpwd, char **oldpwd)
@@ -48,13 +48,23 @@ static bool	home_path(t_env *env, char **newpwd, char **oldpwd)
 		p1char(oldpwd);
 		return (0);
 	}
+	e_status(0);
 	return (1);
 }
 
-static bool	path(char **newpwd, char **oldpwd, char *pwd)
+static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 {
+	int		old;
+
+	old = 2;
 	*oldpwd = getcwd(NULL, 0);
-	*newpwd = ft_strdup(pwd);
+	if (pwd[0] == '-' && !pwd[1])
+	{
+		*newpwd = env_value("OLDPWD", env);
+		old = 1;
+	}
+	else
+		*newpwd = ft_strdup(pwd);
 	if (chdir(*newpwd) == -1)
 	{
 		error_cd_output(pwd);
@@ -62,28 +72,31 @@ static bool	path(char **newpwd, char **oldpwd, char *pwd)
 		p1char(newpwd);
 		return (0);
 	}
-	return (1);
+	return (old);
 }
 
 void	ft_cd(t_env *env, char *pwd)
 {
 	char	*newpwd;
 	char	*oldpwd;
+	int		old;
 
 	oldpwd = NULL;
 	newpwd = NULL;
-	if (!pwd || (pwd && pwd[0] == '~' && !pwd[1]) || (pwd && pwd[0] == '-' && pwd[1] == '-' && !pwd[2]))
+	old = 0;
+	if (is_home(pwd))
 	{
 		if (!home_path(env, &newpwd, &oldpwd))
 			return ;
 	}
 	else
-		if ((!path(&newpwd, &oldpwd, pwd)))
+	{
+		old = path(env, &newpwd, &oldpwd, pwd);
+		if (!old)
 			return ;
+	}
 	p1char(&newpwd);
 	newpwd = getcwd(NULL, 0);
-	update_env(env, oldpwd, "OLDPWD");
-	update_env(env, newpwd, "PWD");
-	p1char(&oldpwd);
-	p1char(&newpwd);
+	old_path_output(old, newpwd);
+	update_env_clean(env, &newpwd, &oldpwd);
 }

@@ -51,6 +51,7 @@ SRC = 	minishell.c									\
 		./execution/builtin/utils/export_utils_0.c	\
 		./execution/builtin/utils/export_utils_1.c	\
 		./execution/builtin/utils/exit_utils_0.c	\
+		./execution/builtin/utils/cd_utils_0.c		\
 		./execution/v_error.c						\
 
 HDR = 		minishell.h 					\

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 16:19:17 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:26:27 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int		list_size(t_env *list);
 t_env	*list_new_node(char *value, char *key, bool eg);
 /*~~~~~~~~~~~~~~~~~~~~~~<exit_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	is_overflow(const char *str, size_t *ma);
+/*~~~~~~~~~~~~~~~~~~~~~~<cd_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
+bool	is_home(char *pwd);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	file_not_found(const char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
