@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:38:17 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 19:10:52 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:45:23 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static t_env	*new_env(char *key, char *value, bool eq)
 	return (env);
 }
 
-t_env	*construct_env(char **ev)
+t_env	*construct_env(char **ev, bool first)
 {
 	t_env	*env;
 	t_env	*new;
@@ -101,5 +101,7 @@ t_env	*construct_env(char **ev)
 		tmp->next = new;
 		tmp = new;
 	}
+	if (first)
+		remove_value_oldpwd(env);
 	return (env);
 }

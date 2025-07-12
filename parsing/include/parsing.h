@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 19:10:48 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:48:10 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PARSING_H
 
 # define ERR_MEM "Allocation Faield\n"
+# define ERR_QUOTES "Error Quotes\n"
+# define ERR_PIPE "minishell: syntax error near unexpected token `|'\n"
+# define ERR_RED "minishell: syntax error near unexpected token `newline'\n"
 
 typedef struct s_token	t_token;
 typedef struct s_env	t_env;
@@ -126,7 +129,7 @@ char		*env_value(char *key, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~<env_heredoc.c>~~~~~~~~~~~~~~~~~~~*/
 void		resolve_heredoc(t_env *env, char **input, int fd);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_list.c>~~~~~~~~~~~~~~~~~~~~~~*/
-t_env		*construct_env(char **env);
+t_env		*construct_env(char **env, bool first);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		env_space(char **input, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exp_special.c>~~~~~~~~~~~~~~~~~~~~~~*/
@@ -136,6 +139,7 @@ int			count_word(char *content);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils1_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		set_new_content(t_token **token, t_exp *exp, t_ambg *amb);
+void		remove_value_oldpwd(t_env *env);
 char		*new_value_quotes(char *str);
 bool		is_eq(char *content);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils_env.c>~~~~~~~~~~~~~~~~~~~~~~*/

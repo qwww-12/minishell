@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:18:34 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 14:17:20 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:01:12 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ void	start_builtin(t_cmd *cmd, t_env **env)
 {
 	if (!ft_strcmp(cmd->commands[0], "echo"))
 		ft_echo(cmd);
-	if (!ft_strcmp(cmd->commands[0], "export"))
+	else if (!ft_strcmp(cmd->commands[0], "export"))
 		ft_export(*env, cmd->commands);
-	if (!ft_strcmp(cmd->commands[0], "unset"))
+	else if (!ft_strcmp(cmd->commands[0], "unset"))
 		ft_unset(env, cmd->commands);
-	if (!ft_strcmp(cmd->commands[0], "exit"))
+	else if (!ft_strcmp(cmd->commands[0], "exit"))
 		ft_exit(cmd, *env, cmd->commands);
-	if (!ft_strcmp(cmd->commands[0], "env") && !cmd->commands[1])
+	else if (!ft_strcmp(cmd->commands[0], "env") && !cmd->commands[1])
 		ft_env(*env);
+	else if (!ft_strcmp(cmd->commands[0], "cd"))
+		ft_cd(*env, cmd->commands[1]);
 }

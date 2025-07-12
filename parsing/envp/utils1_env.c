@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:26:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 17:42:41 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:12:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,19 @@ char	*new_value_quotes(char *str)
 	}
 	strr[r1] = '\0';
 	return (free(str), ft_strdup(strr));
+}
+
+void	remove_value_oldpwd(t_env *env)
+{
+	while (env)
+	{
+		if (!ft_strcmp(env->key, "OLDPWD"))
+		{
+			p1char(&env->value);
+			env->eq = 0;
+		}
+		env = env->next;
+	}
 }
 
 void	set_new_content(t_token **token, t_exp *exp, t_ambg *amb)

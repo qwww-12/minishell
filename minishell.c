@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:55:20 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 20:45:24 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:30:34 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av, char **ev)
 
 	(void)ac;
 	(void)av;
-	env = construct_env(ev);
+	env = construct_env(ev, 1);
 	while (1)
 	{
 		rl_catch_signals = 0;

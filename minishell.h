@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 17:36:41 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:31:18 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "./libft/libft.h"
 # include "./execution/get_next_line/gnl.h"
 # include "./parsing/include/parsing.h"
-# include "./parsing/include/syntax.h"
 # include "./execution/include/exec.h"
 
 typedef struct s_env	t_env;

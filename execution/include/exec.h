@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 14:54:29 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:19:17 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ERR_FORK "Fork Failed\n"
 # define ERR_DUP2 "Dup2 Failed\n"
 # define ERR_DUP "Dup Failed\n"
+# define ERR_CHDIR "Chdir Failed\n"
 # define ERR_MANY_ARGS "minishell: exit: too many arguments\n"
 # define READ 0
 # define WRITE 0
@@ -44,6 +45,8 @@ void	ft_export(t_env *env, char **cmd);
 void	ft_unset(t_env **env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_exit.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_exit(t_cmd *tmd, t_env *env, char **cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<ft_cd.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	ft_cd(t_env *env, char *pwd);
 /*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*get_valide_key(char *str);
 void	swap_nodes(t_env *node1, t_env *node2);

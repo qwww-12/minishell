@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:30:33 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 20:38:28 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:12:30 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,26 @@ static void	free1nd(t_env *env)
 	env = NULL;
 }
 
-static void	remove_var(t_env *env, t_env *rmv)
-{
-	if (env)
-		env->next = rmv->next;
-	free1nd(rmv);
-}
-
 static void	var_isfound(t_env **env, char *var)
 {
-	t_env	*tmp;
-	t_env	*envp;
+	t_env	*prev;
+	t_env	*curr;
 
-	tmp = NULL;
-	envp = *env;
-	while (envp)
+	prev = NULL;
+	curr = *env;
+	while (curr)
 	{
-		if (!ft_strcmp(envp->key, var))
+		if (!ft_strcmp(curr->key, var))
 		{
-			if (!tmp)
-			{
-				tmp = envp;
-				envp = envp->next;
-				*env = (*env)->next;
-				free1nd(tmp);
-				continue ;
-			}
-			remove_var(tmp, *env);
+			if (prev)
+				prev->next = curr->next;
+			else
+				*env = curr->next;
+			free1nd(curr);
+			return ;
 		}
-		tmp = envp;
-		envp = envp->next;
+		prev = curr;
+		curr = curr->next;
 	}
 }
 

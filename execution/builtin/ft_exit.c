@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:48:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:00:53 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:23:18 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	exit_clean(t_cmd *cmd, t_env *env, char *num)
 {
 	size_t	ext;
 
+	ext = 0;
 	env_leaks(env);
 	write(1, "exit\n", 5);
 	if (is_overflow(num, &ext))
@@ -57,13 +58,8 @@ void	ft_exit(t_cmd *tmd, t_env *env, char **cmd)
 	int		r;
 	int		f;
 
-	r = 1;
-	f = 0;
-	while (cmd[r])
-		r++;
-	if (r == 1)
-		exit(0);
 	r = 0;
+	f = 0;
 	while (cmd[++r])
 	{
 		if (r == 2)

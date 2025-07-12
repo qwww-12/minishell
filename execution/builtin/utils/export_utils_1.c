@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:41:46 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 17:47:10 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:58:08 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_env	*list_new_node(char *value, char *key, bool eq)
 	if (!new)
 		return (eprintf(ERR_MEM), NULL);
 	new->key = ft_strdup(key);
-	new->value = ft_strdup (value);
+	new->value = ft_strdup(value);
 	new->eq = eq;
 	new->next = NULL;
 	return (new);
