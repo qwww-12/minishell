@@ -46,8 +46,10 @@ SRC = 	minishell.c									\
 		./execution/builtin/ft_env.c				\
 		./execution/builtin/ft_export.c				\
 		./execution/builtin/ft_unset.c				\
+		./execution/builtin/ft_exit.c				\
 		./execution/builtin/utils/export_utils_0.c	\
 		./execution/builtin/utils/export_utils_1.c	\
+		./execution/builtin/utils/exit_utils_0.c	\
 		./execution/v_error.c						\
 
 HDR = 		minishell.h 					\

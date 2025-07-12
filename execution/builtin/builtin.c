@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:18:34 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 20:44:04 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:17:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	start_builtin(t_cmd *cmd, t_env **env)
 		ft_export(*env, cmd->commands);
 	if (!ft_strcmp(cmd->commands[0], "unset"))
 		ft_unset(env, cmd->commands);
+	if (!ft_strcmp(cmd->commands[0], "exit"))
+		ft_exit(cmd, *env, cmd->commands);
 	if (!ft_strcmp(cmd->commands[0], "env") && !cmd->commands[1])
 		ft_env(*env);
 }

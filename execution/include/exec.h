@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/11 20:39:36 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:54:29 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ERR_FORK "Fork Failed\n"
 # define ERR_DUP2 "Dup2 Failed\n"
 # define ERR_DUP "Dup Failed\n"
+# define ERR_MANY_ARGS "minishell: exit: too many arguments\n"
 # define READ 0
 # define WRITE 0
 
@@ -41,6 +42,8 @@ void	ft_env(t_env *env);
 void	ft_export(t_env *env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_unset.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_unset(t_env **env, char **cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<ft_exit.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	ft_exit(t_cmd *tmd, t_env *env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*get_valide_key(char *str);
 void	swap_nodes(t_env *node1, t_env *node2);
@@ -50,6 +53,8 @@ t_env	*ft_copy_env(t_env *env);
 void	list_add_back(t_env **list, t_env *new);
 int		list_size(t_env *list);
 t_env	*list_new_node(char *value, char *key, bool eg);
+/*~~~~~~~~~~~~~~~~~~~~~~<exit_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
+bool	is_overflow(const char *str, size_t *ma);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	file_not_found(const char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
