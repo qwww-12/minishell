@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:18:34 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 16:01:12 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:50:28 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ bool	is_builtin(char *command)
 
 void	start_builtin(t_cmd *cmd, t_env **env)
 {
+	if (!cmd->commands[0])
+		return ;
 	if (!ft_strcmp(cmd->commands[0], "echo"))
 		ft_echo(cmd);
 	else if (!ft_strcmp(cmd->commands[0], "export"))
