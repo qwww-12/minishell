@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 08:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/10 15:19:01 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:32:25 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*prompt_heredooc(void)
 
 	line = NULL;
 	write(1, "> ", 2);
-	line = get_next_line(1);
+	line = get_next_line(0);
 	if (line)
 		line = delete_newline(line);
 	return (line);
@@ -51,14 +51,17 @@ static void	run_heredooc(t_cmd *cmd, t_red *red, t_env *env)
 	while (1)
 	{
 		line = prompt_heredooc();
-		if (!line)
+		if (!line || !line[0])
 			break ;
 		else if (!ft_strcmp(line, red->file))
 			break ;
 		else if (line && red->expand == 0)
-			ft_putstr_fd(line, cmd->hfd[WRITE]);
+		{
+			write(cmd->hfd[1], line, ft_strlen(line));
+			write(cmd->hfd[1], "\n", 1);
+		}
 		else
-			resolve_heredoc(env, &line, cmd->hfd[WRITE]);
+			resolve_heredoc(env, &line, cmd->hfd[1]);
 		p1char(&line);
 	}
 	p1char(&line);

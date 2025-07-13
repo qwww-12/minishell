@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:05:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/07 17:05:52 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:32:45 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	resolve_heredoc(t_env *env, char **input, int fd)
 		r++;
 	}
 	write(fd, *input, ft_strlen(*input));
+	write(fd, "\n", 1);
 }

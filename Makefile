@@ -74,8 +74,6 @@ SRC_LIB = 	./libft/ft_strjoin.c 	\
 			./libft/ft_isalnum.c	\
 			./libft/ft_strcmp.c		\
 			./libft/ft_itoa.c		\
-			./libft/ft_putstr_fd.c	\
-			./libft/ft_putchar_fd.c	\
 			./libft/ft_split.c		\
 
 OBJ_LIB = $(SRC:.c=.o)
