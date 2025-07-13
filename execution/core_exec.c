@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:16:30 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 18:03:22 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:42:50 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	excute_commands(t_cmd *cmd, t_env **env)
 	signal(SIGINT, SIG_IGN);
 	if (!setup_heredocs(cmd, *env))
 		return (0);
+	printf("%d\n", cmd->hfd[0]);
+	printf("%d\n", cmd->hfd[1]);
 	store_io_fd(backup_fd);
 	if ((is_builtin(cmd) && !cmd->next) || (cmd && !cmd->commands[0]))
 	{

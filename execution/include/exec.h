@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 17:41:27 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:59:44 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # define ERR_DUP "Dup Failed\n"
 # define ERR_CHDIR "Chdir Failed\n"
 # define ERR_MANY_ARGS "minishell: exit: too many arguments\n"
-# define READ 0
-# define WRITE 1
 
 typedef struct s_cmd	t_cmd;
 typedef struct s_env	t_env;

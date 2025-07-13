@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 18:04:11 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 21:44:03 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 
 	anv = environment_to_array(env);
 	if (ft_strchr(cmd->commands[0], '/'))
-		path = cmd->commands[0];
+		path = ft_strdup(cmd->commands[0]);
 	else
 		path = find_path(env, cmd->commands[0]);
 	if (!path || access(path, X_OK) == -1)
@@ -32,7 +32,11 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 		p2char(&anv);
 		exit(127);
 	}
+	printf("path is %s\n", path);
+	printf("cmd %s\n", cmd->commands[0]);
+	printf("cmd %s\n", cmd->commands[1]);
 	execve(path, cmd->commands, anv);
+	printf("2 %s\n", path);
 	p1char(&path);
 	p2char(&anv);
 	exit(1);

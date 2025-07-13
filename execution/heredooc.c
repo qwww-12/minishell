@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 08:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 18:32:25 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:59:18 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	run_heredooc(t_cmd *cmd, t_red *red, t_env *env)
 	while (1)
 	{
 		line = prompt_heredooc();
-		if (!line || !line[0])
+		if (!line)
 			break ;
 		else if (!ft_strcmp(line, red->file))
 			break ;
@@ -74,11 +74,11 @@ static bool	fork_heredooc(t_cmd *cmd, t_red *red, t_env *env)
 
 	pid = fork();
 	if (pid < 0)
-		return (close_fd(&cmd->hfd[WRITE]), eprintf(ERR_FORK), 0);
+		return (close_fd(&cmd->hfd[0]), eprintf(ERR_FORK), 0);
 	else if (pid == 0)
 	{
 		set_signals_heredoc();
-		close_fd(&cmd->hfd[READ]);
+		close_fd(&cmd->hfd[0]);
 		run_heredooc(cmd, red, env);
 		exit(0);
 	}
@@ -98,13 +98,13 @@ bool	setup_heredocs(t_cmd *cmd, t_env *env)
 		red = cmd->red;
 		while (red)
 		{
-			if (cmd->hfd[WRITE] != -1)
-				close_fd(&cmd->hfd[WRITE]);
+			if (cmd->hfd[1] != -1)
+				close_fd(&cmd->hfd[1]);
 			if (pipe(cmd->hfd) == -1)
 				return (eprintf(ERR_FPIP), 0);
 			if (red->red_type == HERDOOC)
 				if (!fork_heredooc(cmd, red, env))
-					return (close_fd(&cmd->hfd[WRITE]), 0);
+					return (close_fd(&cmd->hfd[1]), 0);
 			red = red->next;
 		}
 		cmd = cmd->next;
