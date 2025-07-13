@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:45:01 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 21:15:13 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:59:07 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ bool	set_fd_redirections(t_cmd *cmd)
 		{
 			close_all_fd(&cmd->io_fd[0], &cmd->io_fd[1]);
 			ambiguous_redirect_output(red->file);
-			e_status(1);
 			return (0);
 		}
 		red = red->next;

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_utils_1.c                                   :+:      :+:    :+:   */
+/*   t_envutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 16:41:46 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:58:08 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/13 16:23:51 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/13 17:48:10 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../minishell.h"
+#include "../minishell.h"
 
 int	list_size(t_env *list)
 {
@@ -56,4 +56,32 @@ t_env	*list_new_node(char *value, char *key, bool eq)
 	new->eq = eq;
 	new->next = NULL;
 	return (new);
+}
+
+char	**environment_to_array(t_env *env)
+{
+	t_env	*tmp;
+	char	**envp;
+	char	*join;
+	int		len;
+	int		r;
+
+	r = 0;
+	len = list_size(env);
+	tmp = env;
+	envp = malloc(sizeof (char *) * (len + 1));
+	if (!envp)
+		return (eprintf(ERR_MEM), NULL);
+	while (tmp)
+	{
+		if (tmp->eq)
+			join = ft_strjoin(tmp->key, "=");
+		else
+			join = ft_strdup(tmp->key);
+		envp[r++] = ft_strjoin(join, tmp->value);
+		p1char(&join);
+		tmp = tmp->next;
+	}
+	envp[r] = NULL;
+	return (envp);
 }

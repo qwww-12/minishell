@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 RFLG = -lreadline
 
@@ -40,6 +40,11 @@ SRC = 	minishell.c									\
 		./execution/heredooc.c						\
 		./execution/leaks_fd.c						\
 		./execution/redirections.c					\
+		./execution/t_envutils.c					\
+		./execution/path.c					\
+		./execution/runtime.c						\
+		./execution/child.c							\
+		./execution/v_error.c						\
 		./execution/fd.c							\
 		./execution/builtin/builtin.c				\
 		./execution/builtin/ft_echo.c				\
@@ -49,10 +54,8 @@ SRC = 	minishell.c									\
 		./execution/builtin/ft_exit.c				\
 		./execution/builtin/ft_cd.c					\
 		./execution/builtin/utils/export_utils_0.c	\
-		./execution/builtin/utils/export_utils_1.c	\
 		./execution/builtin/utils/exit_utils_0.c	\
 		./execution/builtin/utils/cd_utils_0.c		\
-		./execution/v_error.c						\
 
 HDR = 		minishell.h 					\
 		 	./parsing/include/token.h		\
@@ -73,6 +76,7 @@ SRC_LIB = 	./libft/ft_strjoin.c 	\
 			./libft/ft_itoa.c		\
 			./libft/ft_putstr_fd.c	\
 			./libft/ft_putchar_fd.c	\
+			./libft/ft_split.c		\
 
 OBJ_LIB = $(SRC:.c=.o)
 

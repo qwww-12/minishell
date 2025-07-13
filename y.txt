@@ -1,2 +1,11 @@
 rnv | grep PATH
 echo -n m > l
+$v
+
+
+
+
+
+note
+
+access

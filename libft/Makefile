@@ -8,7 +8,7 @@ SRCS =		ft_strlen.c		ft_strdup.c		\
 			ft_isalpha.c	ft_strcmp.c		\
 			ft_isdigit.c	ft_isalnum.c	\
 			ft_itoa.c		ft_putstr_fd.c	\
-			ft_putchar_fd.c					\
+			ft_putchar_fd.c	ft_split.c		\
 
 OBJS = $(SRCS:.c=.o)
 

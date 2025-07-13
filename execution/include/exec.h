@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 21:55:06 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/13 17:41:27 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@
 # define ERR_CHDIR "Chdir Failed\n"
 # define ERR_MANY_ARGS "minishell: exit: too many arguments\n"
 # define READ 0
-# define WRITE 0
+# define WRITE 1
 
 typedef struct s_cmd	t_cmd;
 typedef struct s_env	t_env;
 typedef struct s_red	t_red;
 
 /*~~~~~~~~~~~~~~~~~~~~~~<core_exec.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	excute_commands(t_cmd *cmd, t_env **env);
-/*~~~~~~~~~~~~~~~~~~~~~~<core_exec.c>~~~~~~~~~~~~~~~~~~~~~~*/
+bool	excute_commands(t_cmd *cmd, t_env **env);
+/*~~~~~~~~~~~~~~~~~~~~~~<runtime.c>~~~~~~~~~~~~~~~~~~~~~~*/
+bool	run_commands(t_cmd *cmd, t_env **env, int *back_up);
+/*~~~~~~~~~~~~~~~~~~~~~~<child.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	start_child(t_cmd *cmd, t_env **env, int *back_up);
+/*~~~~~~~~~~~~~~~~~~~~~~<heredooc.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	setup_heredocs(t_cmd *cmd, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks_fd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	close_fd(int *fd);
@@ -48,15 +52,19 @@ void	ft_unset(t_env **env, char **cmd);
 void	ft_exit(t_cmd *tmd, t_env *env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_cd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_cd(t_env *env, char *pwd);
+/*~~~~~~~~~~~~~~~~~~~~~~<t_envutils.c>~~~~~~~~~~~~~~~~~~~~~~*/
+t_env	*list_new_node(char *value, char *key, bool eq);
+char	**environment_to_array(t_env *env);
+void	list_add_back(t_env **list, t_env *new);
+int		list_size(t_env *list);
+/*~~~~~~~~~~~~~~~~~~~~~~<path.c>~~~~~~~~~~~~~~~~~~~~~~*/
+char	*find_path(t_env *env, char *cmd);
+void	error_path_output(char *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*get_valide_key(char *str);
 void	swap_nodes(t_env *node1, t_env *node2);
 void	desplay_list_export(t_env *env);
 t_env	*ft_copy_env(t_env *env);
-/*~~~~~~~~~~~~~~~~~~~~~~<export_utils_1.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	list_add_back(t_env **list, t_env *new);
-int		list_size(t_env *list);
-t_env	*list_new_node(char *value, char *key, bool eg);
 /*~~~~~~~~~~~~~~~~~~~~~~<exit_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	is_overflow(const char *str, size_t *ma);
 /*~~~~~~~~~~~~~~~~~~~~~~<cd_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
