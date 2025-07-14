@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 22:33:46 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/14 18:52:08 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:33:57 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ bool	run_commands(t_cmd *cmd, t_env **env, int *back_up)
 	}
 	wait(&status);
 	set_e_status(status);
-	restore_io_fd(back_up);
+	close_fd(&cmd->hfd[0]);
 	return (1);
 }
