@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 21:44:03 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:53:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 		p2char(&anv);
 		exit(127);
 	}
-	printf("path is %s\n", path);
-	printf("cmd %s\n", cmd->commands[0]);
-	printf("cmd %s\n", cmd->commands[1]);
 	execve(path, cmd->commands, anv);
-	printf("2 %s\n", path);
 	p1char(&path);
 	p2char(&anv);
 	exit(1);

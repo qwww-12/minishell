@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 08:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 19:59:18 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:51:32 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ static bool	fork_heredooc(t_cmd *cmd, t_red *red, t_env *env)
 	else if (pid == 0)
 	{
 		set_signals_heredoc();
-		close_fd(&cmd->hfd[0]);
 		run_heredooc(cmd, red, env);
 		exit(0);
 	}
 	waitpid(pid, &status, 0);
 	set_e_status(status);
+	close_fd(&cmd->hfd[1]);
 	if (e_status(-1) == 1)
 		return (0);
 	return (1);
