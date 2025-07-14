@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:16:30 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/14 16:54:32 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:07:05 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ bool	excute_commands(t_cmd *cmd, t_env **env)
 		if (!set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
 			return (e_status(1), 0);
 		start_builtin(cmd, env);
-		close_all_fd(&cmd->io_fd[0], &cmd->io_fd[1]);
-		restore_io_fd(backup_fd);
 	}
 	else
 		run_commands(cmd, env, backup_fd);
+	restore_io_fd(backup_fd);
 	return (1);
 }
