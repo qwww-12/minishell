@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 08:21:56 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 16:27:11 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:02:52 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	close_fd(int *fd)
 void	parent_clean_fd(t_cmd *cmd)
 {
 	close_fd(&cmd->hfd[0]);
-	(void)cmd;
+	if (cmd->prev)
+		close_all_fd(&cmd->prev->pipe_fd[0], &cmd->prev->pipe_fd[1]);
 }
