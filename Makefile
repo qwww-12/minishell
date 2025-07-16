@@ -40,8 +40,9 @@ SRC = 	minishell.c									\
 		./execution/heredooc.c						\
 		./execution/leaks_fd.c						\
 		./execution/redirections.c					\
+		./execution/pipe.c							\
 		./execution/t_envutils.c					\
-		./execution/path.c					\
+		./execution/path.c							\
 		./execution/runtime.c						\
 		./execution/child.c							\
 		./execution/v_error.c						\

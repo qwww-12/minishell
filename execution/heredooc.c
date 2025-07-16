@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 08:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/14 19:41:43 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:51:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ bool	setup_heredocs(t_cmd *cmd, t_env *env)
 				close_fd(&cmd->hfd[1]);
 			if (red->red_type == HERDOOC)
 			{	
+				close_all_fd(&cmd->hfd[0], &cmd->hfd[1]);
 				if (pipe(cmd->hfd) == -1)
 					return (eprintf(ERR_FPIP), 0);	
 				if (!fork_heredooc(cmd, red, env))

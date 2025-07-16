@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:45:01 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/14 19:57:56 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:26:36 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ static bool	set_fd_infile(t_cmd *cmd, t_red *red)
 {
 	if (cmd->io_fd[0] != -1)
 		close_fd(&cmd->io_fd[0]);
-	if (red->red_type == REDIR_IN)
-	{
-		cmd->io_fd[0] = open(red->file, O_RDONLY, 0777);
+	cmd->io_fd[0] = open(red->file, O_RDONLY, 0777);
 		if (cmd->io_fd[0] == -1)
 			return (file_not_found(red->file), 0);
-	}
-	else
-		cmd->io_fd[0] = cmd->hfd[0];
 	return (1);
+}
+
+static void	set_fd_heredooc(t_cmd *cmd)
+{
+	if (cmd->io_fd[0] != -1)
+		cmd->io_fd[0] = -1;
+	cmd->io_fd[0] = cmd->hfd[0];
 }
 
 bool	set_fd_redirections(t_cmd *cmd)
@@ -56,9 +58,11 @@ bool	set_fd_redirections(t_cmd *cmd)
 		if (red->red_type == REDIR_OUT || red->red_type == APPEND)
 			if (!set_fd_outfile(cmd, red))
 				return (0);
-		if (red->red_type == REDIR_IN || red->red_type == HERDOOC)
+		if (red->red_type == REDIR_IN)
 			if (!set_fd_infile(cmd, red))
 				return (0);
+		if (red->red_type == HERDOOC)
+			set_fd_heredooc(cmd);
 		if (red->red_type == AMB)
 		{
 			close_all_fd(&cmd->io_fd[0], &cmd->io_fd[1]);
@@ -72,13 +76,13 @@ bool	set_fd_redirections(t_cmd *cmd)
 
 bool	dup2_fd_redirections(t_cmd *cmd)
 {
-	if (cmd->io_fd[0] != 0 && cmd->io_fd[0] != -1)
+	if (cmd->io_fd[0] != -1)
 	{
 		if (dup2(cmd->io_fd[0], 0) == -1)
 			return (eprintf(ERR_DUP2), 0);
 		close(cmd->io_fd[0]);
 	}
-	if (cmd->io_fd[1] != 1 && cmd->io_fd[1] != -1)
+	if (cmd->io_fd[1] != -1)
 	{
 		if (dup2(cmd->io_fd[1], 1) == -1)
 			return (eprintf(ERR_DUP2), 0);

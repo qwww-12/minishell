@@ -1,8 +1,9 @@
-rnv | grep PATH
-echo -n m > l
+rnv | grep PATH ->exit status
+echo -n m > l ->yes
 $v
-
-
+cat << l | << j | << p | ls
+cat << l << l
+<< l << l ls
 
 
 

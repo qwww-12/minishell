@@ -6,14 +6,14 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 19:59:44 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:06:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
-# define ERR_FPIP "Problem init array pipefd\n"
+# define ERR_FPIP "Pipe Failed\n"
 # define ERR_FORK "Fork Failed\n"
 # define ERR_DUP2 "Dup2 Failed\n"
 # define ERR_DUP "Dup Failed\n"
@@ -74,8 +74,12 @@ void	ambiguous_redirect_output(char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	set_fd_redirections(t_cmd *cmd);
 bool	dup2_fd_redirections(t_cmd *cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<pipe.c>~~~~~~~~~~~~~~~~~~~~~~*/
+bool	dup2_fd_pipe(t_cmd *cmd);
+bool	setup_fd_pipe(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<fd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	store_io_fd(int *fds);
 bool	restore_io_fd(int *fds);
+void	parent_clean_fd(t_cmd *cmd);
 
 #endif
