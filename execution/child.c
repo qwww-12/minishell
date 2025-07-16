@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 16:26:51 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:19:25 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ static void	continue_run_command(t_cmd *cmd, t_env *env, int *back_up)
 
 void	start_child(t_cmd *cmd, t_env **env, int *back_up)
 {
-	if (!dup2_fd_pipe(cmd) || !set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
+	if (!dup2_fd_pipe(cmd))
+		exit(1);
+	if (!set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
 		exit(1);
 	if (is_builtin(cmd))
 	{

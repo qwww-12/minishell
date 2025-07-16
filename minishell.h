@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:31:18 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:22:15 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_cmd
 /*~~~~~~~~~~~~~~~~~~~~~~~<exit_status.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 int			e_status(int val);
 void		set_e_status(int status);
+void		waiting_all_child(pid_t	lastpid);
 /*~~~~~~~~~~~~~~~~~~~~~~<error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		eprintf(const char *str);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/

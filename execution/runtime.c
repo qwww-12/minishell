@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 22:33:46 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 17:00:57 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:22:34 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ bool	run_commands(t_cmd *cmd, t_env **env, int *back_up)
 {
 	pid_t	pid;
 	int		status;
+	int		now;
 
 	while (cmd)
 	{
@@ -33,8 +34,6 @@ bool	run_commands(t_cmd *cmd, t_env **env, int *back_up)
 			parent_clean_fd(cmd);
 		cmd = cmd->next;
 	}
-	while (wait(&status) > 0)
-		;
-	set_e_status(status);
+	waiting_all_child(pid);
 	return (1);
 }
