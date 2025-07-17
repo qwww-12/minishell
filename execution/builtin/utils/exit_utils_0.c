@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 14:47:26 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:01:35 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:58:39 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static bool	ft_checkovf(long long ma, int mg, char c)
 {
 	if ((ma >= 922337203685477580 && mg == 1 && c >= '8') 
 		|| (ma >= 922337203685477580 && mg == -1 && c >= '9'))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 bool	is_overflow(const char *str, size_t *ma)
@@ -33,10 +33,10 @@ bool	is_overflow(const char *str, size_t *ma)
 			mg = -1;
 	while (*str >= 48 && *str <= 57)
 	{
-		if (!ft_checkovf(*ma, mg, *str))
-			return (0);
+		if (ft_checkovf(*ma, mg, *str))
+			return (1);
 		*ma = (*ma * 10) + (*str++ - 48);
 	}
 	*ma = *ma * mg;
-	return (1);
+	return (0);
 }

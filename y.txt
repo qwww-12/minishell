@@ -10,3 +10,13 @@ cat << l << l
 note
 
 access
+
+
+
+when env empty craete the list
+oldpwd dosnt set when env empty
+
+unset path then run a cmand we got a error 
+
+exit
+

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:48:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:23:18 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 19:07:59 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,17 @@ static void	char_exit(t_cmd *cmd, t_env *env, char *arg, char c)
 	}
 }
 
-static void	exit_clean(t_cmd *cmd, t_env *env, char *num)
+static void	exit_clean(t_cmd *cmd, t_env *env, char *num, bool ffree)
 {
 	size_t	ext;
 
 	ext = 0;
 	env_leaks(env);
 	write(1, "exit\n", 5);
-	if (is_overflow(num, &ext))
+	if (!is_overflow(num, &ext))
 	{
+		if (ffree)
+			p1char(&num);
 		cmdfree(cmd);
 		exit(((ext % 256) + 256) % 256);
 	}
@@ -62,6 +64,7 @@ void	ft_exit(t_cmd *tmd, t_env *env, char **cmd)
 	f = 0;
 	while (cmd[++r])
 	{
+		printf("here\n");
 		if (r == 2)
 		{
 			too_many_arguments();
@@ -71,5 +74,8 @@ void	ft_exit(t_cmd *tmd, t_env *env, char **cmd)
 		while (cmd[r][++f])
 			char_exit(tmd, env, cmd[r], cmd[r][f]);
 	}
-	exit_clean(tmd, env, cmd[r - 1]);
+	if (r - 1 == 0)
+		exit_clean(tmd, env, ft_itoa(e_status(-1)), 1);
+	else
+		exit_clean(tmd, env, cmd[r - 1], 0);
 }
