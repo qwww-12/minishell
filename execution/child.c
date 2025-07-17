@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:32:15 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:44:24 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	continue_run_command(t_cmd *cmd, t_env *env, int *back_up)
 		path = ft_strdup(cmd->commands[0]);
 	else
 		path = find_path(env, cmd->commands[0]);
-	if (!path || access(path, X_OK) == -1)
+	if (!path || access(path, X_OK) == -1 || cmd->qt)
 	{
-		if (path)
+		if (path && !cmd->qt)
 			error_path_output(path);
 		else
 			error_path_output(cmd->commands[0]);

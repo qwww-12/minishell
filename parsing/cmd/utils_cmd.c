@@ -6,17 +6,20 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:13:42 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/08 09:25:17 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:42:45 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	amb_next(t_token *token, t_cmd *tmd)
+void	amb_qt_next(t_token *token, t_cmd *tmd)
 {
 	if (tmd->amb == 1)
-		return ;
+		token->amb = 1;
 	tmd->amb = token->amb;
+	if (tmd->qt == 1)
+		token->qt = 1;
+	tmd->qt = token->qt;
 }
 
 bool	mvalloc(char ***commands, int size)

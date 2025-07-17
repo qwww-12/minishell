@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 20:35:26 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:42:35 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_token
 	bool	red;
 	bool	exp;
 	bool	amb;
+	bool	qt;
 	t_type	type_token;
 	t_token	*next;
 }	t_token;
@@ -157,7 +158,7 @@ t_cmd		*create_list_cmd(t_token *tokens);
 int			counter_pipe(t_token *tokens);
 int			analyze_word(t_token *tokens);
 bool		mvalloc(char ***commands, int size);
-void		amb_next(t_token *token, t_cmd *tmd);
+void		amb_qt_next(t_token *token, t_cmd *tmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<nodes_cmd.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_cmd		*cmd_node(void);
 t_red		*red_node(void);

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 14:01:34 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 20:34:48 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:42:02 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ bool	hydrate_cmd(t_cmd **cmd, t_token *tokens)
 			else if (tokens->type_token != WORD)
 				if (!control_cmd(&l_var, &tmd->red, &tokens, &var.i))
 					return (0);
-			amb_next(tokens, tmd);
+			amb_qt_next(tokens, tmd);
 			tokens = tokens->next;
 		}
 		tmd->commands[var.r] = NULL;

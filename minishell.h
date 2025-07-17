@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 17:22:15 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:39:11 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_cmd
 	int		io_fd[2];
 	int		pipe_fd[2];
 	bool	amb;
+	bool	qt;
 	t_red	*red;
 	t_cmd	*prev;
 	t_cmd	*next;
