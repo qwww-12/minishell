@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 22:57:51 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 17:23:12 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:25:46 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	waiting_all_child(pid_t	lastpid)
 	{
 		extpid = wait(&status);
 		if (extpid < 0)
-			break ;
+			return ;
 		if (extpid == lastpid)
 			set_e_status(status); 
 	}
