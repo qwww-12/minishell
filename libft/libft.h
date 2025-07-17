@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 20:50:15 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 18:33:02 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:33:35 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_atoi(const char *str);
 
 #endif

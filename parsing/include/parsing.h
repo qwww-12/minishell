@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:52:22 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:37:58 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ void		ambiguous_redirect(t_token **t, t_ambg *ambr, t_exp *exp);
 bool		is_special(char c, bool f_quotes);
 int			count_word(char *content);
 int			expand_meta(char **content, int pos, int r, bool f_quotes);
+/*~~~~~~~~~~~~~~~~~~~~~~<utils2_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
+char		*add_1shlvl(char *value);
 /*~~~~~~~~~~~~~~~~~~~~~~<utils1_env.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		set_new_content(t_token **token, t_exp *exp, t_ambg *amb);
 void		remove_value_oldpwd(t_env *env);

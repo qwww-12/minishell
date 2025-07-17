@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:38:17 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 15:45:23 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:36:09 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ static t_env	*new_env(char *key, char *value, bool eq)
 	if (!env)
 		return (eprintf(ERR_MEM), NULL);
 	env->key = key;
-	env->value = value;
+	if (!ft_strcmp(env->key, "SHLVL"))
+		env->value = add_1shlvl(value);
+	else
+		env->value = value;
 	env->eq = eq;
 	env->next = NULL;
 	return (env);
