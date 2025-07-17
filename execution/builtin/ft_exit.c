@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:48:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 19:07:59 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 19:14:04 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_exit(t_cmd *tmd, t_env *env, char **cmd)
 	f = 0;
 	while (cmd[++r])
 	{
-		printf("here\n");
 		if (r == 2)
 		{
 			too_many_arguments();
