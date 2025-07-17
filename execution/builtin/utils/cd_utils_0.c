@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 18:53:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 21:53:16 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:22:29 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,30 @@ void	update_env_clean(t_env *env, char **newpwd, char **oldpwd)
 	update_env(env, *newpwd, "PWD");
 	p1char(oldpwd);
 	p1char(newpwd);
+}
+
+char	*change_to_home(t_env *env, char **pwd)
+{
+	char	*new;
+	char	*home;
+	char	*tmp;
+	int		len;
+	int		v;
+
+	v = 0;
+	home = env_value("HOME", env);
+	tmp = *pwd;
+	*pwd = malloc(ft_strlen(tmp));
+	if (!*pwd)
+		return (eprintf(ERR_MEM), NULL);
+	while (tmp[v + 1])
+	{
+		(*pwd)[v] = tmp[v + 1];
+		v++;
+	}
+	p1char(&tmp);
+	new = ft_strjoin(home, *pwd);
+	p1char(pwd);
+	p1char(&home);
+	return (new);
 }

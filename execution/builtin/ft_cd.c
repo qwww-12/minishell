@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:21:03 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 19:32:15 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:26:00 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 	return (old);
 }
 
-void	ft_cd(t_env *env, char *pwd)
+void	ft_cd(t_env *env, char **pwd)
 {
 	char	*newpwd;
 	char	*oldpwd;
@@ -84,14 +84,16 @@ void	ft_cd(t_env *env, char *pwd)
 	oldpwd = NULL;
 	newpwd = NULL;
 	old = 0;
-	if (is_home(pwd))
+	if (is_home(*pwd))
 	{
 		if (!home_path(env, &newpwd, &oldpwd))
 			return ;
 	}
 	else
 	{
-		old = path(env, &newpwd, &oldpwd, pwd);
+		if ((*pwd)[0] == '~' && (*pwd)[1] == '/')
+			*pwd = change_to_home(env, pwd);
+		old = path(env, &newpwd, &oldpwd, *pwd);
 		if (!old)
 			return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 14:06:54 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:23:26 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_unset(t_env **env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_exit.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ft_exit(t_cmd *tmd, t_env *env, char **cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<ft_cd.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	ft_cd(t_env *env, char *pwd);
+void	ft_cd(t_env *env, char **pwd);
 /*~~~~~~~~~~~~~~~~~~~~~~<t_envutils.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_env	*list_new_node(char *value, char *key, bool eq);
 char	**environment_to_array(t_env *env);
@@ -66,6 +66,7 @@ t_env	*ft_copy_env(t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<exit_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	is_overflow(const char *str, size_t *ma);
 /*~~~~~~~~~~~~~~~~~~~~~~<cd_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
+char	*change_to_home(t_env *env, char **pwd);
 void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
 bool	is_home(char *pwd);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
