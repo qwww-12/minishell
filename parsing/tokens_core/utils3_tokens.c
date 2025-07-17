@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 14:50:50 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/06/01 15:16:26 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:51:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,27 @@ static bool	is_symbols_space(char c)
 	if (is_symbols(c) || is_space(c))
 		return (1);
 	return (0);
+}
+
+void	flag_qt(char *content, bool *qt)
+{
+	int		r;
+
+	r = 0;
+	if (!content[r])
+	{
+		*qt = 1;
+		return ;
+	}
+	while (content[r])
+	{
+		if (is_space(content[r]))
+		{
+			*qt = 1;
+			break ;
+		}
+		r++;
+	}
 }
 
 void	cut_value_quotes(int *r, char *tokens, char c, bool flag)
