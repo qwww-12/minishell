@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:26:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 17:12:54 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:25:12 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	remove_value_oldpwd(t_env *env)
 		if (!ft_strcmp(env->key, "OLDPWD"))
 		{
 			p1char(&env->value);
+			env->value = ft_strdup("");
 			env->eq = 0;
 		}
 		env = env->next;

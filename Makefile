@@ -20,6 +20,7 @@ SRC = 	minishell.c									\
 		./parsing/envp/env_expander.c				\
 		./parsing/envp/env_heredoc.c				\
 		./parsing/envp/env_list.c					\
+		./parsing/envp/env_default.c				\
 		./parsing/envp/env_split.c					\
 		./parsing/envp/exp_special.c				\
 		./parsing/envp/utils_env.c					\

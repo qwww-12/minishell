@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:38:17 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 17:36:09 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:35:47 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_env_value(char *env)
 	return (value);
 }
 
-static t_env	*new_env(char *key, char *value, bool eq)
+t_env	*new_env(char *key, char *value, bool eq)
 {
 	t_env	*env;
 
@@ -89,7 +89,7 @@ t_env	*construct_env(char **ev, bool first)
 	int		counter;
 
 	if (!ev || !*ev)
-		return (NULL);
+		return (default_env());
 	env = new_env(get_env_key(ev[0]), get_env_value(ev[0]), is_eq(ev[0]));
 	if (!env)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 17:37:58 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:27:24 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,10 @@ char		*key_not_found(char **content, int pos_key, int len_key);
 char		*env_value(char *key, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~<env_heredoc.c>~~~~~~~~~~~~~~~~~~~*/
 void		resolve_heredoc(t_env *env, char **input, int fd);
+/*~~~~~~~~~~~~~~~~~~~~~~<env_default.c>~~~~~~~~~~~~~~~~~~~~~~*/
+t_env		*default_env(void);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_list.c>~~~~~~~~~~~~~~~~~~~~~~*/
+t_env		*new_env(char *key, char *value, bool eq);
 t_env		*construct_env(char **env, bool first);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_split.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		env_space(char **input, t_env *env);

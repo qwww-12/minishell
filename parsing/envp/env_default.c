@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   env_default.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 20:17:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 11:01:44 by mbarhoun         ###   ########.fr       */
+/*   Created: 2025/07/17 20:45:51 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/18 11:00:28 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static void	history_input(char *input)
+t_env	*default_env(void)
 {
-	if (input[0] == '\0')
-		return ;
-	add_history(input);
-}
+	t_env	*env;
 
-char	*rd_line(t_env *env)
-{
-	char	*rd_line;
-
-	rd_line = NULL;
-	rd_line = readline("minishell-$> ");
-	if (!rd_line)
-	{
-		env_leaks(env);
-		printf("\033[1A");
-		printf("\033[13C");
-		printf("exit\n");
-		exit(0);
-	}
-	history_input(rd_line);
-	return (rd_line);
+	env = new_env(ft_strdup("PWD"), getcwd(NULL, 0), 1);
+	env->next = new_env(ft_strdup("SHLVL"), ft_strdup("0"), 1);
+	env->next->next = new_env(ft_strdup("_"), ft_strdup("/usr/bin/env"), 1);
+	env->next->next->next = new_env(ft_strdup("OLDPWD"), ft_strdup(""), 0);
+	return (env);
 }
