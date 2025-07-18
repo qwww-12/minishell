@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 12:57:30 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 13:32:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,3 @@ void		set_signals_child(void);
 void		set_signals_heredoc(void);
 
 #endif
-
-
-
-
-
-
-
-
-
-
