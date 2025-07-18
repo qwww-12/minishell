@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:45:01 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 19:48:20 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:47:37 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	set_fd_outfile(t_cmd *cmd, t_red *red)
 	{
 		cmd->io_fd[1] = open(red->file, O_CREAT | O_APPEND | O_RDWR, 0777);
 		if (cmd->io_fd[1] == -1)
-			return (0);
+			return (print_errno_info(red->file), 0);
 	}
 	return (1);
 }
@@ -37,7 +37,7 @@ static bool	set_fd_infile(t_cmd *cmd, t_red *red)
 		close_fd(&cmd->io_fd[0]);
 	cmd->io_fd[0] = open(red->file, O_RDONLY, 0777);
 	if (cmd->io_fd[0] == -1)
-		return (file_not_found(red->file), 0);
+		return (print_errno_info(red->file), 0);
 	return (1);
 }
 

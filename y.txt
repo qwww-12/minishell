@@ -41,3 +41,36 @@ minishell-$> cd "~/"
 | `EROFS`        | Read-only file system                |
 | `ENAMETOOLONG` | Filename too long                    |
 | `ENOTEMPTY`    | Directory not empty                  |
+
+# 1. cat on a missing file
+cat notfound.txt
+
+# 2. ls on a missing file
+ls notfound.txt
+
+# 3. rm on a missing file
+rm notfound.txt
+
+# 4. stat on a missing file
+stat notfound.txt
+
+# 5. head on a missing file
+head notfound.txt
+
+# 6. tail on a missing file
+tail notfound.txt
+
+# 7. grep on a missing file
+grep hello notfound.txt
+
+# 8. cp from a missing file
+cp notfound.txt copy.txt
+
+# 9. mv a missing file
+mv notfound.txt newname.txt
+
+# 10. Execute a non-existent binary
+./notfound_executable
+
+# 11. Redirect input from a non-existent file
+cat < notfound.txt
