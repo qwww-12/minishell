@@ -6,17 +6,15 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 22:33:46 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:01:02 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:09:54 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-bool	run_commands(t_cmd *cmd, t_env **env, int *back_up)
+bool	run_commands(t_cmd *cmd, t_env **env)
 {
 	pid_t	pid;
-	int		status;
-	int		now;
 
 	while (cmd)
 	{
@@ -28,7 +26,7 @@ bool	run_commands(t_cmd *cmd, t_env **env, int *back_up)
 		else if (pid == 0)
 		{
 			set_signals_child();
-			start_child(cmd, env, back_up);
+			start_child(cmd, env);
 		}
 		else
 			parent_clean_fd(cmd);

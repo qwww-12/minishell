@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 17:23:26 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:10:10 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct s_red	t_red;
 /*~~~~~~~~~~~~~~~~~~~~~~<core_exec.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	excute_commands(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<runtime.c>~~~~~~~~~~~~~~~~~~~~~~*/
-bool	run_commands(t_cmd *cmd, t_env **env, int *back_up);
+bool	run_commands(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<child.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	start_child(t_cmd *cmd, t_env **env, int *back_up);
+void	start_child(t_cmd *cmd, t_env **env);
 /*~~~~~~~~~~~~~~~~~~~~~~<heredooc.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	setup_heredocs(t_cmd *cmd, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks_fd.c>~~~~~~~~~~~~~~~~~~~~~~*/

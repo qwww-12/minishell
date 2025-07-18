@@ -1,6 +1,6 @@
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RFLG = -lreadline
 
@@ -60,9 +60,8 @@ SRC = 	minishell.c									\
 		./execution/builtin/utils/exit_utils_0.c	\
 		./execution/builtin/utils/cd_utils_0.c		\
 
-HDR = 		minishell.h 					\
-		 	./parsing/include/token.h		\
-		 	./parsing/include/syntax.h		\
+HDR = 		minishell.h 						\
+		 	./parsing/include/parsing.h			\
 
 OBJ = $(SRC:.c=.o)
 
@@ -87,17 +86,17 @@ HDR_LIB = ./libft/libft.h
 S_GNL = ./execution/get_next_line/gnl.c			\
 		./execution/get_next_line/gnl_utils.c	\
 
-HDR_GNL = ./parsing/get_next_line/gnl.h
+HDR_GNL = ./execution/get_next_line/gnl.h
 
 OBJ_GNL = $(S_GNL:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_GNL) $(LIB)
-	$(CC) $(CFLAGS) $(OBJ_GNL) $(OBJ) $(LIB) -I$(HOME)/.brew/opt/readline/include -L$(HOME)/.brew/opt/readline/lib -lreadline -o $@ $(RFLG)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_GNL) $(LIB) -I$(HOME)/.brew/opt/readline/include -L$(HOME)/.brew/opt/readline/lib -lreadline -o $@ $(RFLG)
 
-./parsing/get_next_line/%.o: ./parsing/get_next_line/%.c $HDR_GNL
-	$(CC) $(CFALGS) -c $< -o $@
+./execution/get_next_line/%.o: ./execution/get_next_line/%.c $(HDR_GNL)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.c $(HDR)
 	$(CC) $(CFLAGS) -c $< -o $@

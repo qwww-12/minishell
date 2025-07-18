@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:39:11 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:57:30 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_cmd
 	t_cmd	*prev;
 	t_cmd	*next;
 }	t_cmd;
+
 /*~~~~~~~~~~~~~~~~~~~~~~~<exit_status.c>~~~~~~~~~~~~~~~~~~~~~~~*/
 int			e_status(int val);
 void		set_e_status(int status);
@@ -74,3 +75,13 @@ void		set_signals_child(void);
 void		set_signals_heredoc(void);
 
 #endif
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 18:53:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 17:22:29 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:07:23 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ char	*change_to_home(t_env *env, char **pwd)
 	char	*new;
 	char	*home;
 	char	*tmp;
-	int		len;
 	int		v;
 
 	v = 0;

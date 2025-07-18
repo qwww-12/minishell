@@ -6,13 +6,13 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 11:25:53 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:06:39 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	continue_run_command(t_cmd *cmd, t_env *env, int *back_up)
+static void	continue_run_command(t_cmd *cmd, t_env *env)
 {
 	char	**anv;
 	char	*path;
@@ -40,7 +40,7 @@ static void	continue_run_command(t_cmd *cmd, t_env *env, int *back_up)
 	exit(1);
 }
 
-void	start_child(t_cmd *cmd, t_env **env, int *back_up)
+void	start_child(t_cmd *cmd, t_env **env)
 {
 	if (!dup2_fd_pipe(cmd))
 		exit(1);
@@ -52,5 +52,5 @@ void	start_child(t_cmd *cmd, t_env **env, int *back_up)
 		exit(e_status(-1));
 	}
 	else
-		continue_run_command(cmd, *env, back_up);
+		continue_run_command(cmd, *env);
 }
