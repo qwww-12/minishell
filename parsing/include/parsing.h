@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 12:57:49 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:12:09 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_token
 	bool	exp;
 	bool	amb;
 	bool	qt;
+	bool	hm;
 	t_type	type_token;
 	t_token	*next;
 }	t_token;
@@ -122,7 +123,7 @@ bool		is_symbols(char c);
 bool		is_space(char c);
 bool		quotes_is_valid(char *tokens);
 /*~~~~~~~~~~~~~~~~~~~~<utils3_tokens.c>~~~~~~~~~~~~~~~~~~*/
-void		flag_qt(char *content, bool *qt);
+void		flag_qt_hm(char *content, bool *qt, bool *hm);
 void		cut_value_quotes(int *r, char *tokens, char c, bool flag);
 /*~~~~~~~~~~~~~~~~~~~~~<env_expander.c>~~~~~~~~~~~~~~~~~~~*/
 void		is_env(t_token **token, t_env *env, bool expander, bool ambg);

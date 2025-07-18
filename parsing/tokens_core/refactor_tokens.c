@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:10:51 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:52:43 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:15:08 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	refactor_tokens(t_token **tokens, t_env *env)
 			if (!expander)
 				token->exp = 0;
 			token->content = remove_quotes(token->content);
-			flag_qt(token->content, &token->qt);
+			flag_qt_hm(token->content, &token->qt, &token->hm);
 		}
 		expander = 1;
 		if (token->type_token == HERDOOC)

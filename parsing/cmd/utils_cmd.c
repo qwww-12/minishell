@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:13:42 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:42:45 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:13:53 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	amb_qt_next(t_token *token, t_cmd *tmd)
 	if (tmd->qt == 1)
 		token->qt = 1;
 	tmd->qt = token->qt;
+	if (!tmd->hm == 0)
+		token->hm = 0;
+	tmd->hm = token->hm;
 }
 
 bool	mvalloc(char ***commands, int size)

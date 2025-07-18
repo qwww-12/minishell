@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:21:03 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 17:26:00 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:26:08 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 		*newpwd = ft_strdup(pwd);
 	if (chdir(*newpwd) == -1)
 	{
-		error_cd_output(pwd);
+		print_errno_info(pwd);
+		e_status(1);
 		p1char(oldpwd);
 		p1char(newpwd);
 		return (0);
@@ -75,7 +76,7 @@ static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 	return (old);
 }
 
-void	ft_cd(t_env *env, char **pwd)
+void	ft_cd(t_env *env, char **pwd, bool hm)
 {
 	char	*newpwd;
 	char	*oldpwd;
@@ -84,14 +85,14 @@ void	ft_cd(t_env *env, char **pwd)
 	oldpwd = NULL;
 	newpwd = NULL;
 	old = 0;
-	if (is_home(*pwd))
+	if (is_home(*pwd, hm))
 	{
 		if (!home_path(env, &newpwd, &oldpwd))
 			return ;
 	}
 	else
 	{
-		if ((*pwd)[0] == '~' && (*pwd)[1] == '/')
+		if ((*pwd)[0] == '~' && (*pwd)[1] == '/' && hm)
 			*pwd = change_to_home(env, pwd);
 		old = path(env, &newpwd, &oldpwd, *pwd);
 		if (!old)

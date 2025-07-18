@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:28:15 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:39:42 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:09:57 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_cmd	*cmd_node(void)
 	cmd->prev = NULL;
 	cmd->next = NULL;
 	cmd->qt = 0;
+	cmd->hm = 1;
 	cmd->hfd[0] = -1;
 	cmd->hfd[1] = -1;
 	cmd->io_fd[0] = -1;

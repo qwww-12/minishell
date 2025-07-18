@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 14:50:50 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/17 16:51:54 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:11:42 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ static bool	is_symbols_space(char c)
 	return (0);
 }
 
-void	flag_qt(char *content, bool *qt)
+void	flag_qt_hm(char *content, bool *qt, bool *hm)
 {
 	int		r;
 
 	r = 0;
+	if (content[r] == '~')
+		*hm = 0;
 	if (!content[r])
 	{
 		*qt = 1;

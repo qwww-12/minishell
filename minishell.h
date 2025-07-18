@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 13:32:54 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:13:38 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <signal.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/readline.h"
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/history.h"
 # include "./libft/libft.h"
@@ -53,6 +54,7 @@ typedef struct s_cmd
 	int		pipe_fd[2];
 	bool	amb;
 	bool	qt;
+	bool	hm;
 	t_red	*red;
 	t_cmd	*prev;
 	t_cmd	*next;
@@ -64,6 +66,7 @@ void		set_e_status(int status);
 void		waiting_all_child(pid_t	lastpid);
 /*~~~~~~~~~~~~~~~~~~~~~~<error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		eprintf(const char *str);
+void		print_errno_info(char *erm);
 /*~~~~~~~~~~~~~~~~~~~~~~<leaks.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void		first_free(t_token *tokens, char *input);
 void		p1char(char **ptr);
