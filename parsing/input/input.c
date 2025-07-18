@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:17:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 11:01:44 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:47:31 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*rd_line(t_env *env)
 		printf("\033[1A");
 		printf("\033[13C");
 		printf("exit\n");
-		exit(0);
+		exit(e_status(-1));
 	}
 	history_input(rd_line);
 	return (rd_line);

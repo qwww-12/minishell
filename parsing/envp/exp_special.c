@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 13:37:36 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/12 21:04:01 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:53:48 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ int	count_word(char *content)
 	r = 0;
 	len = 0;
 	space = 1;
+	while (content[r] && is_space(content[r]))
+		r++;
 	while (content[r])
 	{
-		if (space)
+		if (space && !is_space(content[r]))
 		{
 			len++;
 			space = 0;

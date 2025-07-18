@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:16:30 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/16 17:00:53 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/18 12:00:44 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	excute_commands(t_cmd *cmd, t_env **env)
 	if (!setup_heredocs(cmd, *env))
 		return (0);
 	store_io_fd(backup_fd);
-	if ((is_builtin(cmd) && !cmd->next) || (cmd && !cmd->commands[0]))
+	if ((is_builtin(cmd) && !cmd->next))
 	{
 		if (!set_fd_redirections(cmd) || !dup2_fd_redirections(cmd))
 			return (e_status(1), 0);
