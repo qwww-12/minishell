@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:11:49 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 18:12:09 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:16:53 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ char		*env_value(char *key, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~<env_heredoc.c>~~~~~~~~~~~~~~~~~~~*/
 void		resolve_heredoc(t_env *env, char **input, int fd);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_default.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void		add_default_env(t_env *env);
 t_env		*default_env(void);
 /*~~~~~~~~~~~~~~~~~~~~~~<env_list.c>~~~~~~~~~~~~~~~~~~~~~~*/
 t_env		*new_env(char *key, char *value, bool eq);
