@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 17:38:04 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:03:59 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ char	*change_to_home(t_env *env, char **pwd);
 void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
 bool	is_home(char *pwd, bool qt);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	file_not_found(const char *file);
 void	ambiguous_redirect_output(char *file);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	set_fd_redirections(t_cmd *cmd);
