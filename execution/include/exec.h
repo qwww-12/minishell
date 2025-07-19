@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/19 16:03:59 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:36:43 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	list_add_back(t_env **list, t_env *new);
 int		list_size(t_env *list);
 /*~~~~~~~~~~~~~~~~~~~~~~<path.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*find_path(t_env *env, char *cmd);
-void	error_path_output(char *cmd);
+void	error_path_output(char *cmd, t_env *env);
 /*~~~~~~~~~~~~~~~~~~~~~~<export_utils_0.c>~~~~~~~~~~~~~~~~~~~~~~*/
 char	*get_valide_key(char *str);
 void	swap_nodes(t_env *node1, t_env *node2);

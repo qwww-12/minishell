@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:21:03 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 20:26:08 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:46:41 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static bool	home_path(t_env *env, char **newpwd, char **oldpwd)
 static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 {
 	int		old;
+	char	*tmp;
 
 	old = 2;
 	*oldpwd = getcwd(NULL, 0);
@@ -67,7 +68,10 @@ static int	path(t_env *env, char **newpwd, char **oldpwd, char *pwd)
 		*newpwd = ft_strdup(pwd);
 	if (chdir(*newpwd) == -1)
 	{
-		print_errno_info(pwd);
+		tmp = *newpwd;
+		*newpwd = ft_strjoin("cd: ", tmp);
+		p1char(&tmp);
+		print_errno_info(*newpwd);
 		e_status(1);
 		p1char(oldpwd);
 		p1char(newpwd);

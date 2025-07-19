@@ -6,17 +6,20 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 17:19:22 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/13 18:00:51 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:38:34 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	error_path_output(char *cmd)
+void	error_path_output(char *cmd, t_env *env)
 {
 	write(2, "minishell: ", 11);
 	write(2, cmd, ft_strlen(cmd));
-	write(2, ": command not found\n", 20);
+	if (env_key("PATH", env))
+		write(2, ": command not found\n", 20);
+	else
+		write(2, ": No such file or directory\n", 28);
 }
 
 static char	*get_path(char *path, char *cmd)

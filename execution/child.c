@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 12:06:39 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:37:04 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 	if (!path || access(path, X_OK) == -1 || cmd->qt)
 	{
 		if (path && !cmd->qt)
-			error_path_output(path);
+			error_path_output(path, env);
 		else
-			error_path_output(cmd->commands[0]);
+			error_path_output(cmd->commands[0], env);
 		p1char(&path);
 		p2char(&anv);
 		exit(127);

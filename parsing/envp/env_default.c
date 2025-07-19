@@ -6,13 +6,13 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 20:45:51 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/19 18:16:17 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:37:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static bool	env_key(char *key, t_env *env)
+bool	env_key(char *key, t_env *env)
 {
 	t_env	*tmp;
 
