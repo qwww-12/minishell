@@ -6,11 +6,17 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/20 18:21:20 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:57:44 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void	ffree(char **v1, char ***v2)
+{
+	p1char(v1);
+	p2char(v2);
+}
 
 static void	continue_run_command(t_cmd *cmd, t_env *env)
 {
@@ -19,25 +25,25 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 
 	if (!cmd->commands[0])
 		exit(0);
+	path = NULL;
 	anv = environment_to_array(env);
 	if (ft_strchr(cmd->commands[0], '/'))
 		path = ft_strdup(cmd->commands[0]);
 	else
 		path = find_path(env, cmd->commands[0]);
-	if (!has_slash(cmd->commands[0]) && (!path || access(path, X_OK) == -1 || cmd->qt))
+	if (!has_slash(cmd->commands[0]) && \
+		(!path || access(path, X_OK) == -1 || cmd->qt))
 	{
 		if (path && !cmd->qt)
 			error_path_output(path, env);
 		else
 			error_path_output(cmd->commands[0], env);
-		p1char(&path);
-		p2char(&anv);
+		ffree(&path, &anv);
 		exit(127);
 	}
 	handle_slash(anv, cmd->commands[0], path);
 	execve(path, cmd->commands, anv);
-	p1char(&path);
-	p2char(&anv);
+	ffree(&path, &anv);
 	exit(1);
 }
 
