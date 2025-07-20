@@ -47,8 +47,9 @@ SRC = 	minishell.c									\
 		./execution/path.c							\
 		./execution/runtime.c						\
 		./execution/child.c							\
-		./execution/v_error.c						\
+		./execution/evar_output.c					\
 		./execution/fd.c							\
+		./execution/slash.c							\
 		./execution/builtin/builtin.c				\
 		./execution/builtin/ft_echo.c				\
 		./execution/builtin/ft_env.c				\

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:19:12 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 19:13:38 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:48:40 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <signal.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <sys/wait.h>
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/readline.h"
 # include "/Users/mbarhoun/.brew/opt/readline/include/readline/history.h"
 # include "./libft/libft.h"

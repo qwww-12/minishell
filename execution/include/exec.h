@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/19 18:36:43 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:32:10 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
 bool	is_home(char *pwd, bool qt);
 /*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
 void	ambiguous_redirect_output(char *file);
+void	is_directory(char *dir);
+void	is_not_directory(char *dir);
 /*~~~~~~~~~~~~~~~~~~~~~~<redirections.c>~~~~~~~~~~~~~~~~~~~~~~*/
 bool	set_fd_redirections(t_cmd *cmd);
 bool	dup2_fd_redirections(t_cmd *cmd);
@@ -81,5 +83,8 @@ bool	setup_fd_pipe(t_cmd *cmd);
 bool	store_io_fd(int *fds);
 bool	restore_io_fd(int *fds);
 void	parent_clean_fd(t_cmd *cmd);
+/*~~~~~~~~~~~~~~~~~~~~~~<slash.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	handle_slash(char **anv, char *dir, char *path);
+bool	has_slash(char *dir);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/19 18:37:04 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/20 18:21:20 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 		path = ft_strdup(cmd->commands[0]);
 	else
 		path = find_path(env, cmd->commands[0]);
-	if (!path || access(path, X_OK) == -1 || cmd->qt)
+	if (!has_slash(cmd->commands[0]) && (!path || access(path, X_OK) == -1 || cmd->qt))
 	{
 		if (path && !cmd->qt)
 			error_path_output(path, env);
@@ -34,6 +34,7 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 		p2char(&anv);
 		exit(127);
 	}
+	handle_slash(anv, cmd->commands[0], path);
 	execve(path, cmd->commands, anv);
 	p1char(&path);
 	p2char(&anv);
