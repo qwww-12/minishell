@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 18:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/20 18:21:46 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:56:58 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ static bool	just_slash(char *dir)
 	return (1);
 }
 
+static bool	just_directory(char *dir)
+{
+	struct stat	s_info;
+
+	if(stat(dir, &s_info) != 0)
+		return (0);
+	if (S_ISDIR(s_info.st_mode) == 1)
+		return (1);
+	return (0);
+}
+
 bool	has_slash(char *dir)
 {
 	int		r;
@@ -42,7 +53,7 @@ bool	has_slash(char *dir)
 
 void	handle_slash(char **anv, char *dir, char *path)
 {
-	if (just_slash(dir))
+	if (just_slash(dir) || just_directory(dir))
 	{
 		is_directory(dir);
 		p2char(&anv);

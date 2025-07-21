@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:17:43 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/21 17:36:37 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:37:03 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,6 @@ static bool	is_red(int r, char *content)
 		return (1);
 	return (0);
 }
-
-// static bool	search_space(char *content)
-// {
-// 	int	r;
-
-// 	r = -1;
-// 	while (content[++r])
-// 		if (is_space(content[r]))
-// 			return (1);
-// 	return (0);
-// }
 
 static int	expand_var1(char **content, int pos, t_env *env)
 {
