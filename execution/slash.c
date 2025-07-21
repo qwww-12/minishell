@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 18:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/21 17:56:58 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:46:29 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool	just_directory(char *dir)
 {
 	struct stat	s_info;
 
-	if(stat(dir, &s_info) != 0)
+	if (stat(dir, &s_info) != 0)
 		return (0);
 	if (S_ISDIR(s_info.st_mode) == 1)
 		return (1);
