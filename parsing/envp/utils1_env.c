@@ -6,18 +6,11 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:26:09 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/18 12:02:38 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:33:26 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
-
-static void	err_wrt(const char *file)
-{
-	write(2, "minishell: $", 12);
-	write(2, file, ft_strlen(file));
-	write(2, ": ambiguous redirect\n", 21);
-}
 
 bool	is_eq(char *content)
 {
@@ -81,9 +74,7 @@ void	set_new_content(t_token **token, t_exp *exp, t_ambg *amb)
 	if (count_word(exp->value) > 1 && amb->ambiguous)
 	{
 		(*token)->amb = 1;
-		err_wrt(exp->key);
-		(*token)->content = key_not_found(&(*token)->content, amb->r, \
-							exp->len_key);
+		(*token)->type_token = AMB;
 		return ;
 	}
 	(*token)->content = key_value(&(*token)->content, exp->value, \
