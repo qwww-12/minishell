@@ -1,6 +1,6 @@
 # minishell
 
-### - [x] first you need install library for readline
+### first you need install library for readline
 
 - for use
                 ```make```
