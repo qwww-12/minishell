@@ -11,7 +11,7 @@
 
 - [ ] for Mac you need install Homebrew
 
-                  [Homebrew](https://github.com/kube/42homebrew)
+[Homebrew](https://github.com/kube/42homebrew)
 
 - now make for extract executable file
 
