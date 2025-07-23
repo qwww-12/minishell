@@ -1,9 +1,7 @@
 # minishell
 
 - for use
-
-    ```make```
+                ```make```
 
 - for run
-
-    ```./minishell```
+                ```./minishell```
