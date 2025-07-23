@@ -6,11 +6,21 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:10:07 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/20 18:06:54 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:29:27 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	check_permission_command(char ***env, char *cmd)
+{
+	if (access(cmd, F_OK) != -1 && access(cmd, X_OK) == -1)
+	{
+		print_errno_info(NULL);
+		p2char(env);
+		exit(126);
+	}
+}
 
 void	is_not_directory(char *dir)
 {

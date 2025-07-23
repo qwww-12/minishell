@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:48 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/20 18:32:10 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:31:41 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ bool	is_overflow(const char *str, size_t *ma);
 char	*change_to_home(t_env *env, char **pwd);
 void	update_env_clean(t_env *env, char **newpwd, char **oldpwd);
 bool	is_home(char *pwd, bool qt);
-/*~~~~~~~~~~~~~~~~~~~~~~<v_error.c>~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~<evar_output.c>~~~~~~~~~~~~~~~~~~~~~~*/
+void	check_permission_command(char ***env, char *cmd);
 void	ambiguous_redirect_output(char *file);
 void	is_directory(char *dir);
 void	is_not_directory(char *dir);
@@ -84,7 +85,7 @@ bool	store_io_fd(int *fds);
 bool	restore_io_fd(int *fds);
 void	parent_clean_fd(t_cmd *cmd);
 /*~~~~~~~~~~~~~~~~~~~~~~<slash.c>~~~~~~~~~~~~~~~~~~~~~~*/
-void	handle_slash(char **anv, char *dir, char *path);
+void	handle_slash(char ***anv, char *dir, char *path);
 bool	has_slash(char *dir);
 
 #endif

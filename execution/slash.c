@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 18:02:14 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/21 20:45:00 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:31:14 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,22 @@ bool	has_slash(char *dir)
 	return (0);
 }
 
-void	handle_slash(char **anv, char *dir, char *path)
+void	handle_slash(char ***anv, char *dir, char *path)
 {
 	if (just_directory(dir))
 	{
 		is_directory(dir);
-		p2char(&anv);
+		p2char(anv);
 		p1char(&path);
 		exit(126);
 	}
 	if (has_slash(dir) && access(dir, F_OK) == -1)
 	{
 		is_not_directory(dir);
-		p2char(&anv);
+		p2char(anv);
 		p1char(&path);
 		exit(127);
 	}
+	if (has_slash(dir))
+		check_permission_command(anv, dir);
 }

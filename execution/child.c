@@ -6,7 +6,7 @@
 /*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:40:35 by mbarhoun          #+#    #+#             */
-/*   Updated: 2025/07/20 18:58:59 by mbarhoun         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:31:29 by mbarhoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ffree(char **v1, char ***v2)
 	p2char(v2);
 }
 
-static void	continue_run_command(t_cmd *cmd, t_env *env)
+static bool	continue_run_command(t_cmd *cmd, t_env *env)
 {
 	char	**anv;
 	char	*path;
@@ -34,17 +34,17 @@ static void	continue_run_command(t_cmd *cmd, t_env *env)
 	if (!has_slash(cmd->commands[0]) && \
 		(!path || access(path, X_OK) == -1 || cmd->qt))
 	{
+		if (!path)
+			check_permission_command(&anv, cmd->commands[0]);
 		if (path && !cmd->qt)
 			error_path_output(path, env);
 		else
 			error_path_output(cmd->commands[0], env);
-		ffree(&path, &anv);
-		exit(127);
+		return (ffree(&path, &anv), exit(127), 1);
 	}
-	handle_slash(anv, cmd->commands[0], path);
+	handle_slash(&anv, cmd->commands[0], path);
 	execve(path, cmd->commands, anv);
-	ffree(&path, &anv);
-	exit(1);
+	return (ffree(&path, &anv), exit(1), 1);
 }
 
 void	start_child(t_cmd *cmd, t_env **env)
