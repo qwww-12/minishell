@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   leaks_fd.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarhoun <mbarhoun@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/10 08:21:56 by mbarhoun          #+#    #+#             */
+/*   Updated: 2025/07/17 16:10:49 by mbarhoun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minishell.h"
+
+void	close_all_fd(int *fd1, int *fd2)
+{
+	if (*fd1 != -1)
+	{
+		close(*fd1);
+		*fd1 = -1;
+	}
+	if (*fd2 != -1)
+	{
+		close(*fd2);
+		*fd2 = -1;
+	}
+}
+
+void	close_fd(int *fd)
+{
+	if (*fd != -1)
+	{
+		close(*fd);
+		*fd = -1;
+	}
+}
+
+void	parent_clean_fd(t_cmd *cmd)
+{
+	close_fd(&cmd->hfd[0]);
+	if (cmd->prev)
+		close_all_fd(&cmd->prev->pipe_fd[0], &cmd->prev->pipe_fd[1]);
+}
